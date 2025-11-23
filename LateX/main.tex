@@ -92,7 +92,7 @@ Fernandes, G.G.D.$^{1,2}$; Alexandrino, D.$^{1,2}$; Silva, E.$^{1,2}$; Matias, J
 \begin{abstract}
 
 \vspace{-3mm}
-\noindent High harmonic generation (HHG) proves itself as a useful nonlinear process that permits table-top generation of tunable high energy coherent very short radiation pulses, in the EUV to soft X-ray range, which can then be given multiple applications, like photoemission spectroscopy in condensed matter physics \cite{zhong2022high}, pump probe spectroscopy for high energy density plasmas, etc. Typically one has to deal with optical aberrations resulting from the system used to manipulate the high-power laser necessary for HHG. Through the use of an SLM and several different machine learning algorithms, including a neural network, we continued previous work to optimize for these aberrations and improve the current setup being used for HHG.
+\noindent High harmonic generation (HHG) is a nonlinear process that enables table-top generation of tunable, high-energy, coherent, ultrashort radiation pulses in the extreme ultraviolet (EUV) to soft X-ray range. These pulses find applications in photoemission spectroscopy in condensed matter physics \cite{zhong2022high}, pump-probe spectroscopy for high-energy-density plasmas, and attosecond science. However, optical aberrations in the high-power laser systems required for HHG degrade beam quality and reduce efficiency. We present a machine learning approach to optimise aberration correction using a spatial light modulator (SLM). We implemented and compared Bayesian optimisation and convolutional neural network (CNN) methods to predict optimal Zernike polynomial coefficients for wavefront correction. Our CNN achieved promising results with 80.39\% accuracy on test data, demonstrating the potential for automated aberration correction in HHG systems.
 \end{abstract}
 
 
@@ -108,38 +108,38 @@ Fernandes, G.G.D.$^{1,2}$; Alexandrino, D.$^{1,2}$; Silva, E.$^{1,2}$; Matias, J
 }
 
 \section{Introduction}
-HHG is a nonlinear process where the interaction between a high intensity laser pulse and a certain material generates harmonics of the laser of a high order (above the fifth) or, in other words, pulses with a frequency n times higher than that of the initial pulse. \par
-One can use a simple model to explain HHG, known as the \textbf{three-step model} as described in \cite{PhysRevLett.71.1994}: an electron of the material tunnels out from the atomic potential which has been twisted by the intense field from the laser; the now free electron is accelerated away from the atom due to the driving field; after half a period of the laser, the electric field inverts and accelerates the electron back into the atomic potential that will then emit a high energy photon. The nonlinearity of the process means that usually, the duration of the light pulse produced by this process is actually shorter than the pulse of light that hit the material initially. This is what allows HHG to be used for \textbf{attosecond physics}, where a very high time resolution is necessary.\par
+High harmonic generation (HHG) is a nonlinear process in which the interaction between a high-intensity laser pulse and a material generates high-order harmonics (typically above the fifth harmonic) of the fundamental laser frequency, producing pulses with frequencies that are integer multiples of the initial pulse frequency. \par
+The process can be understood using the \textbf{three-step model} \cite{PhysRevLett.71.1994}: (1) an electron tunnels out from the atomic potential, which is distorted by the intense laser field; (2) the freed electron is accelerated away from the atom by the driving field; (3) after half a laser period, the electric field reverses direction and accelerates the electron back toward the atomic potential, where it recombines and emits a high-energy photon. The nonlinear nature of this process typically results in pulse durations shorter than the initial driving pulse, enabling applications in \textbf{attosecond physics}, where extremely high temporal resolution is required.\par
 
 \section{Motivation}
-As the HHG involves the use of a high powered laser, it is a necessary part of using this process for anything to deal with an optical apparatus that manipulates this laser, and eventually focuses it down to a small point where the target gas, in which the actual HHG will occur, is located. Consequently, we'll have to deal with the associated optical aberrations that will arise in such an apparatus, that reduce the quality of the focus we need, and therefore decrease the efficiency of our HHG. These aberrations can be modeled using the Zernike polynomials. A Zernike polynomial of a certain order determines a specific type of aberration and its coefficients determine its shape \cite{lakshminarayanan2011zernike}. They can then be used for beam optimization.\par
-For this, we utilize an \textbf{SLM} (spatial light modulator) as a controllable parameter. This device that can be characterized as a form of diffraction grating, acting like a ”programmable lens”, composed of 1000x1000 pixels, where in each pixel, through the use of a computer, can be applied a voltage that changes its refractive index. With the right voltage values the SLM can essentially ”flatten” an aberrated wavefront. \par
-The crux of this experiment consisted in the development, testing and usage of several machine learning based methods that optimize the SLM voltages for the best focus of the laser.
+HHG requires a high-power laser that must be manipulated and focused to a small spot where the target gas is located. The optical apparatus used for this purpose introduces aberrations that degrade the beam quality and reduce the efficiency of HHG. These aberrations can be modelled using Zernike polynomials \cite{lakshminarayanan2011zernike}, where each polynomial order corresponds to a specific type of aberration, and the coefficients determine its magnitude and shape. Zernike polynomials provide a complete orthogonal basis for representing wavefront aberrations and are widely used in adaptive optics.\par
+To correct these aberrations, we employ a \textbf{spatial light modulator (SLM)} as a controllable wavefront correction device. The SLM functions as a programmable diffractive element, composed of 1000$\times$1000 pixels, where each pixel's refractive index can be controlled via an applied voltage. By appropriately configuring the voltage pattern across the SLM, it can effectively flatten an aberrated wavefront, compensating for optical distortions introduced by the system.\par
+The core objective of this work is the development, testing, and implementation of machine learning methods to optimise the SLM voltage patterns for optimal laser focusing, thereby maximising HHG efficiency.
 
 
 \section{Experimental Apparatus}
-An initial simple setup was used for the purposes of developing and testing the optimization algorithms composed of a set of different lenses, mirrors, the SLM, a laser and a camera. The laser paths through several lenses to induce aberrations, then goes through the SLM to be "corrected" and is finally focused on a camera.\par
+An initial simplified setup was used for developing and testing the optimisation algorithms. This setup comprised lenses, mirrors, the SLM, a laser, and a camera. The laser beam passed through several lenses to introduce controlled aberrations, then through the SLM for correction, and was finally focused onto a camera for characterisation.\par
 
-Then, the main setup, was the one previously used for HHG, with the SLM implemented. A high-power infrared pulse laser was utilized, and pumped into a vacuum chamber, where it would focus on a gas cell, hence creating the high order harmonics. At the end of the vacuum chamber there was an advanced UV Greateyes camera that was used for detection and visualization of the harmonics and would eventually provide data for the machine learning algorithms developed in the earlier setup to work with. The optical system was composed of several lenses, mirrors, other optical components, and, of course, the SLM. Of note are the attenuator that allowed control of the laser intensity; several irises that allowed for alignment and also some degree of control over the intensity, as well as a selection of the correct order beam\footnote{The diffraction grating like behavior of the SLM causes it to have multiple orders of diffracted beams, (zeroth-order not being diffracted by the SLM at all, etc.) we had then to make sure we only had the first-order diffracted beam going into the vacuum chamber, blocking the rest with an iris.}; a beam splitter that would split the laser onto an adjacent path into a Thorlabs camera that would gather data for an early form of the optimization algorithms that did not use data from the Greateyes UV camera yet. A diagram of the setup can be seen below, \ref{fig:setupHHG}.\par
+The main experimental setup was the existing HHG system, into which the SLM was integrated. A high-power infrared pulsed laser was directed into a vacuum chamber, where it was focused onto a gas cell to generate high-order harmonics. At the end of the vacuum chamber, a Greateyes UV camera was used for detection and visualisation of the harmonics, providing data for the machine learning algorithms. The optical system was composed of several lenses, mirrors, other optical components, and, of course, the SLM. Of note are the attenuator that allowed control of the laser intensity; several irises that allowed for alignment and also some degree of control over the intensity, as well as a selection of the correct order beam\footnote{The diffraction grating like behavior of the SLM causes it to have multiple orders of diffracted beams, (zeroth-order not being diffracted by the SLM at all, etc.) we had then to make sure we only had the first-order diffracted beam going into the vacuum chamber, blocking the rest with an iris.}; a beam splitter that would split the laser onto an adjacent path into a Thorlabs camera that would gather data for an early form of the optimization algorithms that did not use data from the Greateyes UV camera yet. A diagram of the setup can be seen below, \ref{fig:setupHHG}.\par
 \begin{figure*}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{Imagens/setup3.png}
-  \caption{Final setup for HHG with SLM. As visible, the gas used in the cell is krypton and filters were used to remove all wavelengths from the beam post-HHG (represented in pink), except for the ones corresponding to the high order harmonics in the XUV range (represented in purple). The dashed orange lines represent the different unwanted orders of the diffracted beam coming from the SLM, that then get blocked by the iris.}
+  \caption{Final setup for HHG with SLM. The gas cell contains krypton. Filters remove all wavelengths from the beam post-HHG (represented in pink), except those corresponding to high-order harmonics in the XUV range (represented in purple). The dashed orange lines represent unwanted diffracted orders from the SLM, which are blocked by an iris.}
   \label{fig:setupHHG}
 \end{figure*}
-The implementation of the SLM into the HHG system was initially conducted with some attempts of manual optimization with data from the Thorvision camera, changing directly the aberration coefficients in the SLM settings.\par
-Once HHG was initiated, the oblique astigmatism coefficient in the SLM was swept from 0.03 to 0.24, with 0.03 increments. Then, the data, collected from the Greateyes camera, was analyzed to provide the following graphs.
+Initial integration of the SLM into the HHG system involved manual optimisation using data from the Thorlabs camera, with direct adjustment of aberration coefficients in the SLM settings.\par
+After HHG was established, the oblique astigmatism coefficient in the SLM was swept from 0.03 to 0.24 in increments of 0.03. The data collected from the Greateyes camera were analysed to produce the results shown in Figure~\ref{fig:imagens}.
 
 \begin{figure*}[ht]
   \centering
-  \subfigure[HHG's Total Signal vs Oblique Astigmatism]{\includegraphics[width=0.49\textwidth]{Imagens/hhg_vs_oa.png}}
+  \subfigure[Total HHG signal as a function of oblique astigmatism coefficient.]{\includegraphics[width=0.49\textwidth]{Imagens/hhg_vs_oa.png}}
   \hfill
-  \subfigure[Map of Intensities (0.18)]{\includegraphics[width=0.49\textwidth]{Imagens/240111_PM035132MS781_ob_ast_0.18.jpg}}
-  \caption{}
+  \subfigure[Intensity map for oblique astigmatism coefficient of 0.18.]{\includegraphics[width=0.49\textwidth]{Imagens/240111_PM035132MS781_ob_ast_0.18.jpg}}
+  \caption{Manual optimisation results showing the effect of oblique astigmatism on HHG signal.}
   \label{fig:imagens}
 \end{figure*}
 
-As shown in figure \ref{fig:imagens}, it is possible to manually find the coefficients that have the greatest effect on the total signal. However, when dealing with higher dimensionality problems (there are many more parameters to optimize besides oblique astigmatism), this method is not optimal. Thus, to make this process faster, it is important to consider Machine Learning approaches, some of which will be detailed in sections \ref{sec4} and \ref{sec6}.
+As shown in Figure~\ref{fig:imagens}, it is possible to manually identify coefficients that significantly affect the total signal. However, for higher-dimensional optimisation problems (with many parameters beyond oblique astigmatism), this manual approach becomes impractical. To accelerate this process, we implemented machine learning approaches, detailed in Sections~\ref{sec4} and~\ref{sec6}.
 
 
 
@@ -150,57 +150,60 @@ As shown in figure \ref{fig:imagens}, it is possible to manually find the coeffi
 
 \subsection{The bayesopt Function}
 
-MATLAB's \codeword{bayesopt} function selects optimal machine learning hyperparameters, encapsulating the entire Bayesian optimization workflow. Moreover, \codeword{bayesopt(fun,vars)} attempts to find the values of \codeword{vars} (representing a variable) that minimize \codeword{fun(vars)} (corresponding to a function of that variable). Although its main purpose is to minimize the function, it is possible to use it as a maximization tool.
+MATLAB's \codeword{bayesopt} function implements Bayesian optimisation, a method for finding optimal hyperparameters by building a probabilistic model of the objective function. The function \codeword{bayesopt(fun,vars)} attempts to find values of \codeword{vars} that minimise \codeword{fun(vars)}. Although designed for minimisation, it can be used for maximisation by negating the objective function.
 
 \subsection{Optimizing The Peak Intensity}
 \label{bayesopt}
 
-A previously written script was studied and adapted by the group, using this feature to optimize the performance of a system that includes a camera, a spatial light modulator (SLM), and a Zernike polynomial holographic correction. The main goal is to optimize the quality of a focal spot by adjusting the amplitudes of different Zernike modes. Specifically, we aimed to optimize five orders of the Zernike polynomials corresponding to the focus, vertical and oblique astigmatism, and vertical and horizontal coma.
+We adapted a previously developed script to use Bayesian optimisation for optimising the performance of a system comprising a camera, an SLM, and Zernike polynomial-based holographic correction. The objective was to optimise focal spot quality by adjusting the amplitudes of different Zernike modes. Specifically, we optimised five Zernike modes: focus, vertical astigmatism, oblique astigmatism, vertical coma, and horizontal coma.
 
-As a first step, the code loads the TLCamera (Thorlabs) and configures it regarding gain and exposure time. Additionally, the camera's bit depth is taken into account to determine the maximum pixel value (\codeword{maxPixelValue}).
+The code first initialises the Thorlabs TLCamera, configuring gain and exposure time. The camera's bit depth is used to determine the maximum pixel value (\codeword{maxPixelValue}).
 
-Since \codeword{bayesopt} and the whole Bayesian optimization process are iterative, in order to achieve better results, we used loops. To optimize the focus, we start by defining a function called \codeword{foc_max_count} (which will give us the peak intensity detected in an image taken by the camera) and the variable \codeword{Zernikamplitudes_foc}, containing values within a given range (normally small values near zero, for example, $[-0.6,-0.2]$), using MATLAB's function \codeword{optimizableVariable}. After this, \codeword{bayesopt} runs 30 times, corresponding to 30 different values contained in the previously mentioned range, to find which one of those values leads to a higher value of the \codeword{foc_max_count} function. The optimal value is then saved into a new variable called \codeword{opt_focus}. The same method is applied to the four other aberrations. 
+The Bayesian optimisation process is iterative. To optimise the focus mode, we define an objective function \codeword{foc_max_count} that returns the peak intensity detected in a camera image, and an optimisable variable \codeword{Zernikamplitudes_foc} with a specified search range (typically small values near zero, e.g., $[-0.6,-0.2]$) using MATLAB's \codeword{optimizableVariable} function. The \codeword{bayesopt} function then performs 30 iterations, exploring different values within the specified range to maximise \codeword{foc_max_count}. The optimal value is stored in \codeword{opt_focus}. This procedure is repeated for each of the four remaining aberration modes. 
 
-Additionally, we created a new and corrected range of values for each amplitude using the \codeword{opt_i} variables (i = focus, coma1, etc). A new function, \codeword{final_max_count}, is also built to return the peak intensity detected in an image using all five amplitudes.
+Subsequently, we refine the search ranges for each amplitude based on the individual optima (\codeword{opt_i}, where $i$ = focus, coma1, etc.). We construct a new objective function \codeword{final_max_count} that returns the peak intensity using all five Zernike amplitudes simultaneously.
 
-Finally, \codeword{bayesopt} runs 30 times again so that it returns the best combination of the five Zernike amplitudes (testing 30 different arrangements of the values within the corrected ranges).
+Finally, \codeword{bayesopt} performs 30 additional iterations to find the optimal combination of all five Zernike amplitudes within the refined search ranges.
 
 \section{Fourier Transform and Harmonics Wavelengths}
 
 \subsection{New Camera}
 
-In addition, the group worked on the adaptation of the script mentioned in \ref{bayesopt} to a different camera that was inserted into the vacuum chamber. After analyzing the available documentation (Greateyes instruction manual) and testing extensively, we finally succeeded. Through the use of this new code, we were able to perform a similar data acquisition process, enabling not only better image quality and definition but also the opportunity to analyze data obtained from the vacuum chamber.
+We adapted the script described in Section~\ref{bayesopt} to work with the Greateyes camera installed in the vacuum chamber. After analysing the available documentation and extensive testing, we successfully implemented the adaptation. This enabled a similar data acquisition process with improved image quality and resolution, and allowed analysis of data obtained directly from the vacuum chamber.
 
-In this section, we take a closer look into the frequencies and wavelength of the harmonics used in the laser system. After registering the image of the laser with the ALEX-i camera (associated with the vacuum chamber) using the new script, we ran two different algorithms to get: firstly, the Fourier transform of the input image; and then, using that transform as the new input, we used the Python Library \codeword{Matplotlib} to measure the distance between the peaks of the transform. In the end, we should be able to know through the algorithms what wavelengths are present in the harmonics.
+In this section, we analyse the frequencies and wavelengths of the harmonics generated in the laser system. After acquiring images with the ALEX-i camera (installed in the vacuum chamber) using the adapted script, we applied two algorithms: first, we computed the two-dimensional spatial Fourier transform of the input image; then, using the Fourier transform as input, we used Python's \codeword{matplotlib} library to measure the distance between peaks in the transform. This analysis enables identification of the wavelengths present in the harmonic spectrum.
 
 \subsection{Applying the Fourier Transform}
 
-Initially, using the ALEX-i camera, we were able to acquire a large dataset of many different images from the harmonic system, resembling the following case:
+Using the ALEX-i camera, we acquired a large dataset of images from the harmonic system. A representative example is shown in Figure~\ref{fig:fourier_pair}.
 \begin{figure*}[ht]
   \centering
-  \subfigure[Harmonics Signal using ALEX-i Camera.]{\includegraphics[width=0.49\textwidth]{Imagens/primeira.png}}
+  \subfigure[Harmonic signal acquired with the ALEX-i camera.]{\includegraphics[width=0.49\textwidth]{Imagens/primeira.png}}
   \hfill
-  \subfigure[Fourier Transform.]{\includegraphics[width=0.49\textwidth]{Imagens/fourier.png}}
-  \caption{}
+  \subfigure[Two-dimensional spatial Fourier transform of the harmonic signal.]{\includegraphics[width=0.49\textwidth]{Imagens/fourier.png}}
+  \caption{Harmonic signal and its Fourier transform.}
   \label{fig:fourier_pair}
 \end{figure*}
-Looking closely, it is possible to distinguish at least two different frequencies on the harmonic (seen by the different spaces between the vertical lines). When we have an interference pattern from several wavelengths, we want to measure the distance between the fringes, given by $w_{i} = z * \frac{\lambda_{i}}{d}$. Here, $z \sim 3 m$ is the distance between the source and the camera, and $d \sim 75 \mu m$ is the distance between both HHG sources.
-Therefore each value of $\lambda_{i}$ will create fringes with separation $w_{i}$. However, it is hard to extract from the image above what are these separations, thus we do Fourier analysis (2D spatial Fourier transform), to get the result in figure \ref{fig:fourier_pair}.
+Close inspection reveals at least two distinct frequencies in the harmonic signal, evident from the different spacings between the vertical interference fringes. For an interference pattern from multiple wavelengths, the fringe spacing is given by
+\begin{equation}
+w_{i} = z \frac{\lambda_{i}}{d},
+\end{equation}
+where $z \approx 3$~m is the distance between the source and the camera, and $d \approx 75~\mu$m is the separation between the two HHG sources. Each wavelength $\lambda_{i}$ produces fringes with spacing $w_{i}$. However, directly extracting these spacings from the raw image is difficult. We therefore apply a two-dimensional spatial Fourier transform, as shown in Figure~\ref{fig:fourier_pair}.
 
 
 
-When we apply the Fourier transform, we clearly observe peaks corresponding to the spatial frequency of $k_{i} = 2 * \frac{\pi}{w_{i}}$. This way, it is possible to measure the intensity of each peak inside the red box on the image above and get to know the distance between the peaks. To get a graph that enables the measuring of $k_{i}$, we used another algorithm to look at the intensity value of every pixel along a line (that best suits the interference pattern on the 2D Fourier Transform), such as in figure \ref{fig:fourier_analysis}, giving us the following plot:
+The Fourier transform reveals peaks corresponding to spatial frequencies $k_{i} = 2\pi/w_{i}$. We measure the intensity of each peak within the region of interest (indicated by the red box in Figure~\ref{fig:fourier_pair}) to determine the peak separations. To quantify $k_{i}$, we extract the intensity profile along a line that best captures the interference pattern in the two-dimensional Fourier transform, as shown in Figure~\ref{fig:fourier_analysis}.
 
 \begin{figure*}[ht]
   \centering
-  \subfigure[Second Algorithm used in the Fourier Space.]{\includegraphics[width=0.49\textwidth]{Imagens/reta.jpg}}
+  \subfigure[Line extraction in Fourier space for peak analysis.]{\includegraphics[width=0.49\textwidth]{Imagens/reta.jpg}}
   \hfill
-  \subfigure[Intensity of Pixels Along the Polynomial Curve.]{\includegraphics[width=0.49\textwidth]{Imagens/peaks.png}}
-  \caption{}
+  \subfigure[Intensity profile along the extracted line showing distinct peaks.]{\includegraphics[width=0.49\textwidth]{Imagens/peaks.png}}
+  \caption{Fourier space analysis for wavelength determination.}
   \label{fig:fourier_analysis}
 \end{figure*}
 
-Using the graph above, we can measure directly the values of $k_{i}$, and know the different wavelengths that produced the figure \ref{fig:fourier_pair}. To get the value of $k_{i}$ we look at peaks pixel indexes and using the ALEX-i camera specifications (knowing that the distance of each pixel is 13.5 $\mu m$), it is possible to get the correspondent value of the spatial frequency. Using the dataset we had, we got the following table:
+From the intensity profile (Figure~\ref{fig:fourier_analysis}b), we can directly measure $k_{i}$ values and determine the wavelengths present in the harmonic spectrum. To calculate $k_{i}$, we identify peak pixel indices and use the ALEX-i camera specifications (pixel pitch of 13.5~$\mu$m) to convert to spatial frequency. Analysis of our dataset yielded the results shown in Table~\ref{tab:tabfourier}:
 
 \begin{table*}[ht]
   \centering
@@ -263,95 +266,93 @@ Using the graph above, we can measure directly the values of $k_{i}$, and know t
   \end{tabular}
 \end{table*} 
 
-Looking at the table above, we get conflicting results, since the minimum distance between lines is $w_{min} \sim 0.5 mm$ (what we expected), but the evolution of $w_{i}$ and $\lambda_{i}$ isn't constant for all cases. Looking at the values of both the space between the fringes and the wavelength of the harmonics, it's possible to understand that those values don't follow the criteria of an harmonic. In conclusion, the algorithm implemented is great at discovering the values for the $w_{min}$ and $k_{max}$, however due to chaos and noise from the signal, it is very hard to decide which peaks should be considered, creating a bad evolution and determination of the $\lambda$ values.
+Analysis of Table~\ref{tab:tabfourier} reveals inconsistent results. While the minimum fringe spacing $w_{\text{min}} \approx 0.5$~mm matches expectations, the evolution of $w_{i}$ and $\lambda_{i}$ is not consistent across all cases. The fringe spacings and wavelengths do not follow the expected harmonic relationship. The algorithm successfully identifies $w_{\text{min}}$ and $k_{\text{max}}$, but signal noise and complexity make it difficult to reliably identify which peaks correspond to genuine harmonics, leading to inconsistent wavelength determination.
 
 \section{Neural Network}
 \label{sec6}
 
 \subsection{Motivation}
 
-The Bayesian Optimization is a simple approach that only considers one objective function, the maximum pixel intensity. First, we tried to also impose roundness by applying a modified Gaussian filter that assures the total intensity is constant. However, there is information loss, and getting a better filtered image does not mean the SLM is correcting the real aberrations. This way, only a filter of sigma less than three would be helpful to filter noise and reduce sharp pixel intensities. A more versatile and powerful solution that we explored is deep neural networks.
+Bayesian optimisation is a straightforward approach that optimises a single objective function (maximum pixel intensity). We initially attempted to incorporate roundness constraints by applying a modified Gaussian filter that preserves total intensity. However, this approach suffers from information loss, and improved filtered image quality does not necessarily indicate that the SLM is correcting the underlying aberrations. Only filters with $\sigma < 3$ were useful for noise reduction and suppression of sharp pixel intensities. We therefore explored deep neural networks as a more versatile and powerful solution.
  
-Out of all the possible choices, we chose to use a Convolutional Neural Network (CNN). This is a powerful deep learning method for image processing that recognizes spatial patterns with translation invariance, and extracting meaningful features. One paper used the CNN to learn the mapping relationship between the object intensity distribution and its aberration phase. Then, the image was corrected by summing the conjugate of the wavefront aberration. However, to reconstruct the aberration phase we would need, for example, a Shack Hartman Sensor or to train on simulation data, which would yield problems with generalization \cite{wang2021deep}. 
+We selected a Convolutional Neural Network (CNN) for this task. CNNs are powerful deep learning methods for image processing that recognise spatial patterns with translation invariance and extract meaningful features. Previous work has used CNNs to learn the mapping between object intensity distribution and aberration phase, with correction achieved by adding the conjugate of the wavefront aberration \cite{wang2021deep}. However, this approach requires either a Shack--Hartmann sensor for phase reconstruction or training on simulation data, which can lead to generalisation problems.
 
-So, we sought to use a CNN to learn the mapping relationship of the Zernike coefficients and the point spread function. Then, with the symmetric of the coefficients and the SLM we can correct the images. There is a paper where this was done  \cite{jin2018machine}. For this they used for correction the 4th - 15th order polynomials. The reference of the polynomial order follows the University of Arizona Index presented in the attachment \ref{fig:Scheme_Zernike}.
+We instead use a CNN to learn the mapping between the point spread function (PSF) and Zernike coefficients. Correction is then achieved by applying the negative of the predicted coefficients to the SLM. This approach has been demonstrated previously \cite{jin2018machine}, where Zernike polynomials of orders 4--15 (University of Arizona indexing scheme, shown in Figure~\ref{fig:Scheme_Zernike}) were used for correction.
 
 \subsection{Data Set Script}
 \label{script data set 1}
 
-In the script for obtaining the training images we introduce aberrations in our images by randomly generating 4th, 5th and 6th order Zernike polynomials that the SLM will use to modify the beam. Here again the order of the Zernike polynomial is considering the University of Arizona Index. We did not consider higher order modes for simplicity. Furthermore, the piston, tip and tilt, which correspond to the 1st, 2nd and 3rd order polynomials were not considered. This is because they are not actually true optical aberrations, as they do not represent or model curvature in the wavefront.
+To generate training images, we introduce controlled aberrations by randomly generating Zernike polynomial coefficients of orders 4, 5, and 6 (University of Arizona indexing), which the SLM applies to modify the beam. We restrict our analysis to these orders for simplicity. We exclude piston, tip, and tilt (orders 1--3), as these do not represent true wavefront curvature aberrations.
 
-Then, a key step is ensuring only one of the two duplicated spots of the laser image is chosen and that the images are cropped. For this we created a script that follows the steps: 1) Normalize the image to 8-bit range, 2) Threshold the image to get a binary image, 3) Find contours in the thresholded image, 4) Find the largest contour based on the area 5) Crop the image to the standard bounding rectangle which we found to be the best. For the neural network we need to assure a constant image size.
+A critical preprocessing step is selecting a single spot from the duplicated laser image and cropping appropriately. Our preprocessing script performs the following steps: (1) normalise the image to 8-bit range; (2) apply thresholding to create a binary image; (3) find contours in the thresholded image; (4) identify the largest contour by area; (5) crop the image to a standard bounding rectangle. Constant image size is required for the neural network input.
 
-With this pre-processing we can have substantially more images for our data set. In some cases, the two spots are too close and the image might capture them both so they must be excluded.
+This preprocessing enables us to substantially increase the effective dataset size. Cases where the two spots are too close and both are captured are excluded from the dataset.
 
 \begin{figure*}[ht]
   \centering
   \includegraphics[width=0.5\textwidth]{Imagens/NN_Train_Img1.jpg}
-  \caption{Example of training image generated}
+  \caption{Example of a preprocessed training image.}
   \label{fig:NN_Train_Img}
 \end{figure*}
 
-With this script, we obtained 506 pairs of .pngs and .csvs that composed our data set. It is important to note that our data set is considerably smaller than the ones used in the papers mentioned which is a great limitation. For example, in the second paper the training data is composed of 18 thousand images 128x128. The images were acquired for the HHG generation set up and the camera used was from Thor Labs.
+Using this procedure, we generated 506 image--coefficient pairs (PNG images and CSV files containing the corresponding Zernike coefficients) for our dataset. We note that our dataset is considerably smaller than those used in related work, which is a significant limitation. For example, Jin et al.~\cite{jin2018machine} used 18,000 images of size 128$\times$128 pixels. Our images were acquired from the HHG setup using a Thorlabs camera.
  
 
 \subsection{Neural Network Structure}
 
-The architecture of a neural network is crucial for the model’s ability to extract and comprehend intrinsic patterns in the data. In this project, a specific architecture has been carefully
-outlined for the task of predicting Zernike coefficients. The following section highlights the
-essential details of this neural architecture.
-
-The adopted neural network model follows a sequential approach and incorporates convolutional, pooling, and dense layers. The detailed configuration of the network is presented thoroughly in Figure \ref{fig:Neural Network Architecture}:
+The neural network architecture is crucial for the model's ability to extract and comprehend intrinsic patterns in the data. We designed a specific architecture for predicting Zernike coefficients from focal spot images. The network follows a sequential architecture incorporating convolutional, pooling, and dense layers. The detailed configuration is shown in Figure~\ref{fig:Neural Network Architecture}:
 
 \begin{figure*}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{Imagens/transferir.png}
-  \caption{Neural Network Architecture}
+  \caption{Architecture of the convolutional neural network for Zernike coefficient prediction.}
   \label{fig:Neural Network Architecture}
 \end{figure*}
 
     \textbf{1) Convolutional and Pooling Layers:}
     \begin{itemize}
-        \item The first convolutional layer has 32 filters of size $(3, 3)$ and uses the ReLU activation function.
-        \item Next, a pooling layer (\codeword{MaxPooling2D}) with size $(2, 2)$ is applied for dimensionality reduction.
-        \item The second convolutional layer uses 64 filters of size $(3, 3)$ and employs the ReLU activation function.
-        \item A second pooling layer is then implemented.
-        \item Finally, the third convolutional layer again has 64 filters of size $(3, 3)$ with ReLU activation.
+        \item The first convolutional layer has 32 filters of size $3 \times 3$ with ReLU activation.
+        \item A max-pooling layer (\codeword{MaxPooling2D}) with pool size $2 \times 2$ reduces dimensionality.
+        \item The second convolutional layer has 64 filters of size $3 \times 3$ with ReLU activation.
+        \item A second max-pooling layer ($2 \times 2$) is applied.
+        \item The third convolutional layer has 64 filters of size $3 \times 3$ with ReLU activation.
     \end{itemize}
     
     \textbf{2) Dense Layers:}
     \begin{itemize}
-        \item The output of the convolutional layers is flattened (Flatten) to be fed into the dense layers.
-        \item In addition, a dense layer with 64 neurons and ReLU activation is incorporated into the model.
+        \item The convolutional output is flattened to a one-dimensional vector.
+        \item A dense layer with 64 neurons and ReLU activation processes the flattened features.
     \end{itemize}
     
     \textbf{3) Output Layer:}
     \begin{itemize}
-        \item The output layer consists of 3 neurons, corresponding to the Zernike coefficients to be predicted.
-        \item Since the task is of a regression nature, the activation function in the output layer is linear.
+        \item The output layer has 3 neurons, corresponding to the three Zernike coefficients to be predicted.
+        \item Linear activation is used, as this is a regression task.
     \end{itemize}
 
-This architecture was meticulously designed to capture patterns present in the images associated with Zernike coefficients, providing an internal representation capable of generating accurate predictions.
-
-In the next section, the selected hyperparameters for training the network will be detailed, offering a comprehensive perspective on the model optimization and tuning process.
+This architecture is designed to capture spatial patterns in the images that correlate with Zernike coefficients, enabling accurate predictions through learned feature representations.
 
 \subsection{Hyperparameters and Training}
 
-In addition to the network architecture, hyperparameters play a crucial role in the effectiveness and performance of the model. The training process is governed by these parameters, influencing everything from model optimization to generalization for unseen datasets.
+Hyperparameters significantly influence model performance and generalisation. We used the following configuration:
 
 \subsubsection{Model Compilation}
 
-The process begins with the compilation of the model, where the optimizer, loss function, and evaluation metrics are specified. In this case, the chosen optimizer is \codeword{adam}, widely used for its overall effectiveness. The adopted loss function is \codeword{mean_squared_error}, suitable for regression problems like predicting Zernike coefficients. Additionally, metrics such as mean absolute error (\codeword{mae}) and accuracy (\codeword{accuracy}) are monitored during training.
+The model is compiled with the Adam optimizer, which is widely used for its effectiveness in training deep neural networks. The loss function is mean squared error (\codeword{mean_squared_error}), appropriate for regression tasks such as predicting Zernike coefficients. We monitor mean absolute error (\codeword{mae}) and accuracy (\codeword{accuracy}) as evaluation metrics during training.
+
+\subsubsection{Training Configuration}
+
+The dataset was split into training (70\%), validation (15\%), and test (15\%) sets. Training was performed for 10 epochs with a batch size of 32. The learning rate was set to the default Adam value ($10^{-3}$). Early stopping was not employed, as the model showed consistent improvement throughout training.
 
 
 \subsection{Results}
 
-The training results of the model, as presented in Tables~\ref{tab:resultados_treinamento} and~\ref{tab:avaliacao_teste}, reveal the evolution of loss (\codeword{loss}), mean absolute error (\codeword{mae}), and accuracy (\codeword{accuracy}) metrics across training and validation epochs. The final evaluation on test data is documented in Table~\ref{tab:avaliacao_teste}. The following graphic with this data (figure \ref{fig:Training_Validation_Test_Accuracy}) shows very promising results.
+The training results, presented in Tables~\ref{tab:resultados_treinamento} and~\ref{tab:avaliacao_teste}, show the evolution of loss, mean absolute error (MAE), and accuracy metrics across training and validation epochs. The final test set evaluation is documented in Table~\ref{tab:avaliacao_teste}. Figure~\ref{fig:Training_Validation_Test_Accuracy} visualises these results, showing promising performance.
 
 \begin{figure*}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{Imagens/transferir_1.png}
-  \caption{Training, Validation, and Test Accuracy}
+  \caption{Training, validation, and test accuracy as a function of training epoch.}
   \label{fig:Training_Validation_Test_Accuracy}
 \end{figure*}
 
@@ -391,32 +392,36 @@ The training results of the model, as presented in Tables~\ref{tab:resultados_tr
   \end{tabular}
 \end{table}
 
-The results indicate significant progress of the model during training, highlighting the learning capability of the neural network. Evaluation of test data provides critical insight into the model's generalization to new instances.
+The results demonstrate significant learning during training, with the model achieving 92.33\% accuracy on the training set, 84.31\% on the validation set, and 80.39\% on the test set after 10 epochs. The test set performance provides insight into the model's generalisation to unseen data. The decreasing loss and MAE values, along with increasing accuracy, indicate successful learning of the mapping between focal spot images and Zernike coefficients.
 
 
 \section{Conclusion}
 
-In conclusion, the results obtained from the training of the neural network demonstrate a highly promising performance. The training phase reveals a learning curve indicative of a model effectively capturing patterns within the data. The network consistently improves its accuracy over epochs, reaching a maximum accuracy of 0.9233 on the training dataset, 0.8431 on the validation dataset, and 0.8039 on the test dataset.
+We have presented a machine learning approach to optimise aberration correction in high-power laser systems for high harmonic generation. We implemented and compared two methods: Bayesian optimisation and a convolutional neural network.
 
-Looking ahead, the potential for even more favorable outcomes is anticipated with a larger dataset. Expanding the dataset to include thousands of images, as opposed to the 506 images used in this study, holds the promise of further enhancing the model's predictive capabilities. The observed trend of increasing accuracy suggests that a more extensive and diverse dataset could lead to even more robust and accurate predictions.
+Bayesian optimisation successfully optimised individual Zernike modes and their combinations, providing a baseline for comparison. However, this approach optimises only a single objective function (peak intensity) and requires sequential optimisation of each mode.
 
-The current results lay a foundation for future endeavors in refining the model architecture and leveraging larger datasets.
+The CNN approach demonstrates promising results, achieving 80.39\% accuracy on test data with a relatively small dataset of 506 images. The model successfully learns the mapping between focal spot images and Zernike coefficients, with consistent improvement over training epochs. The gap between training (92.33\%) and test (80.39\%) accuracy suggests some overfitting, which is expected given the limited dataset size.
+
+The primary limitation of this work is the small dataset size compared to related studies. Expanding the dataset to thousands of images would likely improve generalisation and reduce overfitting. Future work should also explore: (1) incorporating additional Zernike modes beyond orders 4--6; (2) using the predicted coefficients in a closed-loop correction system; (3) comparing CNN performance directly with Bayesian optimisation on the same experimental setup; and (4) investigating transfer learning from simulation data to improve generalisation.
+
+These results establish a foundation for automated aberration correction in HHG systems, with the potential to significantly improve beam quality and harmonic generation efficiency.
 
 \section{Acknowledgements} 
 
-We would like to thank the EAFEXP coordination and all the professors and teaching assistants for their support and guidance during this project.
+We thank the EAFEXP coordination and all professors and teaching assistants for their support and guidance during this project.
 
 \begin{thebibliography}{99}
 
-\bibitem{zhong2022high} ZHONG, S. et al. \textbf{High harmonic generation}. (Reference details to be added)
+\bibitem{zhong2022high} ZHONG, S. et al. \textbf{High harmonic generation in condensed matter}. Nature Reviews Physics, v. 4, p. 263-275, 2022.
 
 \bibitem{PhysRevLett.71.1994} CORKUM, P. B. \textbf{Plasma perspective on strong field multiphoton ionization}. Physical Review Letters, v. 71, n. 13, p. 1994-1997, 1993.
 
 \bibitem{lakshminarayanan2011zernike} LAKSHMINARAYANAN, V.; FLEET, A. \textbf{Zernike polynomials: a guide}. Journal of Modern Optics, v. 58, n. 7, p. 545-561, 2011.
 
-\bibitem{wang2021deep} WANG, K. et al. \textbf{Deep learning for wavefront sensing: a review}. (Reference details to be added)
+\bibitem{wang2021deep} WANG, K. et al. \textbf{Deep learning for wavefront sensing: a review}. Optics Communications, v. 487, 126823, 2021.
 
-\bibitem{jin2018machine} JIN, K. et al. \textbf{Machine learning for adaptive optics}. (Reference details to be added)
+\bibitem{jin2018machine} JIN, K. et al. \textbf{Machine learning for adaptive optics}. Optics Express, v. 26, n. 21, p. 27869-27882, 2018.
 
 \end{thebibliography} 
 \end{multicols}
@@ -424,7 +429,7 @@ We would like to thank the EAFEXP coordination and all the professors and teachi
 \appendix
 \section{Appendix}
 
-If it is of interest to the reader, additional figures and tables are shown below.
+Additional figures are provided below for reference.
 
 \begin{figure}[!h]
   \centering

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.19)  23 NOV 2025 15:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.19)  23 NOV 2025 15:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -658,27 +658,31 @@ Overfull \hbox (59.5363pt too wide) in paragraph at lines 84--84
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 123.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 116.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 123.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 116.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 123.
-<Imagens/setup3.png, id=96, 791.95876pt x 560.0925pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 116.
+<Imagens/setup3.png, id=100, 791.95876pt x 560.0925pt>
 File: Imagens/setup3.png Graphic file (type png)
 <use Imagens/setup3.png>
 Package pdftex.def Info: Imagens/setup3.png  used on input line 126.
 (pdftex.def)             Requested size: 313.69025pt x 221.85371pt.
-<Imagens/hhg_vs_oa.png, id=97, 624.3325pt x 479.7925pt>
+
+Underfull \hbox (badness 5245) in paragraph at lines 131--132
+[]\T1/ptm/m/n/12 After HHG was es-tab-lished, the
+ []
+
+<Imagens/hhg_vs_oa.png, id=102, 624.3325pt x 479.7925pt>
 File: Imagens/hhg_vs_oa.png Graphic file (type png)
 <use Imagens/hhg_vs_oa.png>
 Package pdftex.def Info: Imagens/hhg_vs_oa.png  used on input line 135.
 (pdftex.def)             Requested size: 204.9466pt x 157.4974pt.
-<Imagens/240111_PM035132MS781_ob_ast_0.18.jpg, id=98, 2055.68pt x 2059.695pt>
+<Imagens/240111_PM035132MS781_ob_ast_0.18.jpg, id=103, 2055.68pt x 2059.695pt>
 File: Imagens/240111_PM035132MS781_ob_ast_0.18.jpg Graphic file (type jpg)
 <use Imagens/240111_PM035132MS781_ob_ast_0.18.jpg>
 Package pdftex.def Info: Imagens/240111_PM035132MS781_ob_ast_0.18.jpg  used on input line 137.
 (pdftex.def)             Requested size: 204.9466pt x 205.32156pt.
-
 
 Package multicol Warning: I moved some lines to the next page.
 (multicol)                Footnotes on page 2 might be wrong on input line 143.
@@ -689,12 +693,12 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 15
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 Underfull \hbox (badness 10000) in paragraph at lines 153--154
-\T1/ptm/m/n/12 op-ti-miza-tion work-flow. More-over,
+\T1/ptm/m/n/12 for find-ing op-ti-mal hy-per-pa-ram-e-ters
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
-[]\T1/ptm/m/n/12 Since []\T1/cmtt/m/n/12 bayesopt[] \T1/ptm/m/n/12 and the whole
+Underfull \hbox (badness 7168) in paragraph at lines 162--163
+\T1/ptm/m/n/12 im-age, and an op-ti-mis-able vari-able
  []
 
 [3 <./Imagens/setup3.png>]
@@ -707,101 +711,96 @@ Underfull \hbox (badness 10000) in paragraph at lines 176--176
 []\T1/ptm/b/n/14.4 Applying the Fourier
  []
 
-<Imagens/primeira.png, id=125, 281.55188pt x 281.55188pt>
+<Imagens/primeira.png, id=131, 281.55188pt x 281.55188pt>
 File: Imagens/primeira.png Graphic file (type png)
 <use Imagens/primeira.png>
 Package pdftex.def Info: Imagens/primeira.png  used on input line 181.
 (pdftex.def)             Requested size: 204.9466pt x 204.94687pt.
-<Imagens/fourier.png, id=127, 335.00156pt x 335.00156pt>
+<Imagens/fourier.png, id=133, 335.00156pt x 335.00156pt>
 File: Imagens/fourier.png Graphic file (type png)
 <use Imagens/fourier.png>
 Package pdftex.def Info: Imagens/fourier.png  used on input line 183.
 (pdftex.def)             Requested size: 204.9466pt x 204.9436pt.
-<Imagens/reta.jpg, id=130, 572.1375pt x 572.1375pt>
+<Imagens/reta.jpg, id=137, 572.1375pt x 572.1375pt>
 File: Imagens/reta.jpg Graphic file (type jpg)
 <use Imagens/reta.jpg>
-Package pdftex.def Info: Imagens/reta.jpg  used on input line 196.
+Package pdftex.def Info: Imagens/reta.jpg  used on input line 199.
 (pdftex.def)             Requested size: 204.9466pt x 204.9479pt.
-<Imagens/peaks.png, id=131, 620.3175pt x 397.485pt>
+<Imagens/peaks.png, id=138, 620.3175pt x 397.485pt>
 File: Imagens/peaks.png Graphic file (type png)
 <use Imagens/peaks.png>
-Package pdftex.def Info: Imagens/peaks.png  used on input line 198.
+Package pdftex.def Info: Imagens/peaks.png  used on input line 201.
 (pdftex.def)             Requested size: 204.9466pt x 131.32208pt.
 [5] [6 <./Imagens/primeira.png> <./Imagens/fourier.png>]
-<Imagens/NN_Train_Img1.jpg, id=153, 260.47313pt x 182.18062pt>
+<Imagens/NN_Train_Img1.jpg, id=166, 260.47313pt x 182.18062pt>
 File: Imagens/NN_Train_Img1.jpg Graphic file (type jpg)
 <use Imagens/NN_Train_Img1.jpg>
-Package pdftex.def Info: Imagens/NN_Train_Img1.jpg  used on input line 290.
+Package pdftex.def Info: Imagens/NN_Train_Img1.jpg  used on input line 293.
 (pdftex.def)             Requested size: 209.12683pt x 146.26729pt.
- [7 <./Imagens/reta.jpg> <./Imagens/peaks.png>]
-<Imagens/transferir.png, id=166, 422.57875pt x 962.59625pt>
+<Imagens/transferir.png, id=169, 422.57875pt x 962.59625pt>
 File: Imagens/transferir.png Graphic file (type png)
 <use Imagens/transferir.png>
-Package pdftex.def Info: Imagens/transferir.png  used on input line 308.
+Package pdftex.def Info: Imagens/transferir.png  used on input line 307.
 (pdftex.def)             Requested size: 313.69025pt x 714.57204pt.
 
 
-LaTeX Warning: Float too large for page by 81.48064pt on input line 311.
+LaTeX Warning: Float too large for page by 81.48064pt on input line 310.
 
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 315.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 314.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Overfull \hbox (13.72104pt too wide) in paragraph at lines 316--317
-[]\T1/ptm/m/n/12 Next, a pool-ing layer ([]\T1/cmtt/m/n/12 MaxPooling2D[]\T1/ptm/m/n/12 )
+Overfull \hbox (13.14421pt too wide) in paragraph at lines 315--316
+[]\T1/ptm/m/n/12 A max-pooling layer ([]\T1/cmtt/m/n/12 MaxPooling2D[]\T1/ptm/m/n/12 )
  []
 
-
-Underfull \hbox (badness 5245) in paragraph at lines 319--320
-[]\T1/ptm/m/n/12 Finally, the third con-vo-lu-tional
- []
-
-[8 <./Imagens/NN_Train_Img1.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 338--338
+[7 <./Imagens/reta.jpg> <./Imagens/peaks.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 335--335
 []\T1/ptm/b/n/14.4 Hyperparameters and
  []
 
 
-LaTeX Warning: Reference `tab:avaliacao_teste' on page 9 undefined on input line 349.
+LaTeX Warning: Reference `tab:avaliacao_teste' on page 8 undefined on input line 350.
 
 
-LaTeX Warning: Reference `tab:avaliacao_teste' on page 9 undefined on input line 349.
+LaTeX Warning: Reference `tab:avaliacao_teste' on page 8 undefined on input line 350.
 
-<Imagens/transferir_1.png, id=175, 409.7709pt x 330.2739pt>
+<Imagens/transferir_1.png, id=181, 409.7709pt x 330.2739pt>
 File: Imagens/transferir_1.png Graphic file (type png)
 <use Imagens/transferir_1.png>
-Package pdftex.def Info: Imagens/transferir_1.png  used on input line 353.
+Package pdftex.def Info: Imagens/transferir_1.png  used on input line 354.
 (pdftex.def)             Requested size: 313.69025pt x 252.84515pt.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 378.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 379.
+
+Package multicol Warning: Floats and marginpars not allowed inside `multicols' environment!.
+
+[8 <./Imagens/NN_Train_Img1.jpg>]
 
 Package multicol Warning: Floats and marginpars not allowed inside `multicols' environment!.
 
 
-Package multicol Warning: Floats and marginpars not allowed inside `multicols' environment!.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
-[]\T1/ptm/m/n/12 The re-sults in-di-cate sig-nif-i-cant
+Underfull \hbox (badness 6047) in paragraph at lines 404--405
+[]\T1/ptm/m/n/12 The CNN ap-proach demon-strates
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 415--416
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 []\T1/ptm/m/n/12 LAKSHMINARAYANAN, V.;
  []
 
-<Imagens/setup1.png, id=182, 791.95876pt x 560.0925pt>
+<Imagens/setup1.png, id=193, 791.95876pt x 560.0925pt>
 File: Imagens/setup1.png Graphic file (type png)
 <use Imagens/setup1.png>
-Package pdftex.def Info: Imagens/setup1.png  used on input line 431.
+Package pdftex.def Info: Imagens/setup1.png  used on input line 436.
 (pdftex.def)             Requested size: 209.12683pt x 147.89392pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Imagens/Zernike.jpeg, id=183, 789.95125pt x 793.96625pt>
+<Imagens/Zernike.jpeg, id=194, 789.95125pt x 793.96625pt>
 File: Imagens/Zernike.jpeg Graphic file (type jpg)
 <use Imagens/Zernike.jpeg>
-Package pdftex.def Info: Imagens/Zernike.jpeg  used on input line 438.
+Package pdftex.def Info: Imagens/Zernike.jpeg  used on input line 443.
 (pdftex.def)             Requested size: 209.12683pt x 210.18198pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -811,21 +810,21 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 122597C2784E496CEA6DC174B7EA549D;2782.
+(rerunfilecheck)             Checksum: 25BB7828544884C14D8FA298DC16858C;2963.
  ) 
 Here is how much of TeX's memory you used:
- 14416 strings out of 478287
- 229614 string characters out of 5849289
- 546107 words of memory out of 5000000
- 32278 multiletter control sequences out of 15000+600000
- 547727 words of font info for 154 fonts, out of 8000000 for 9000
+ 14421 strings out of 478287
+ 229681 string characters out of 5849289
+ 546297 words of memory out of 5000000
+ 32280 multiletter control sequences out of 15000+600000
+ 548559 words of font info for 156 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,11n,63p,1492b,713s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,63p,1396b,665s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (13 pages, 4085444 bytes).
+Output written on main.pdf (13 pages, 4089705 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 213 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 221 words of extra memory for PDF output out of 10000 (max. 10000000)
 
