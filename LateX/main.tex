@@ -241,13 +241,14 @@ The Fourier transform reveals peaks corresponding to spatial frequencies $k_{i} 
 
 From the intensity profile (Figure~\ref{fig:fourier_analysis}b), we can directly measure $k_{i}$ values and determine the wavelengths present in the harmonic spectrum. To calculate $k_{i}$, we identify peak pixel indices and use the ALEX-i camera specifications (pixel pitch of 13.5~$\mu$m) to convert to spatial frequency. Analysis of our dataset yielded the results shown in Table~\ref{tab:tabfourier}:
 
-\begin{table*}[ht]
+\begin{table}[H]
   \centering
-  \setlength{\tabcolsep}{3pt}
+  \setlength{\tabcolsep}{2pt}
   \renewcommand{\arraystretch}{1.1}
   \footnotesize
   \caption{Fourier Transform Analysis.}
   \label{tab:tabfourier}
+  \resizebox{0.48\textwidth}{!}{%
   \begin{tabular}{|c|ccc|cccc|cccc|}
     \hline
     \textbf{Image }& \multicolumn{3}{c|}{1} & \multicolumn{4}{c|}{2} & \multicolumn{4}{c|}{3} \\ \hline
@@ -299,8 +300,8 @@ From the intensity profile (Figure~\ref{fig:fourier_analysis}b), we can directly
       \multicolumn{1}{c|}{13.4} &
       \multicolumn{1}{c|}{14.28} &
       15.53 \\ \hline
-  \end{tabular}
-\end{table*} 
+  \end{tabular}}
+\end{table} 
 
 Analysis of Table~\ref{tab:tabfourier} reveals inconsistent results. While the minimum fringe spacing $w_{\text{min}} \approx 0.5$~mm matches expectations, the evolution of $w_{i}$ and $\lambda_{i}$ is not consistent across all cases. The fringe spacings and wavelengths do not follow the expected harmonic relationship, where wavelengths should scale as $\lambda_n = \lambda_0/n$ for harmonic order $n$.\par
 Several factors contribute to these inconsistencies. First, the interference pattern arises from two spatially separated HHG sources, and any misalignment or variation in source separation $d$ directly affects the measured fringe spacing. Second, the Fourier transform analysis is sensitive to noise in the acquired images, which can create spurious peaks or obscure genuine harmonic peaks. Third, the peak identification algorithm may select peaks corresponding to noise or higher-order interference effects rather than fundamental harmonics. Finally, the limited spatial resolution of the camera (pixel pitch 13.5~$\mu$m) limits the precision of peak position determination in Fourier space.\par
@@ -396,11 +397,11 @@ The training results, presented in Tables~\ref{tab:resultados_treinamento} and~\
   \label{fig:Training_Validation_Test_Accuracy}
 \end{figure}
 
-\begin{table*}[ht]
+\begin{table}[H]
   \centering
   \caption{Training Results}
   \label{tab:resultados_treinamento}
-  \resizebox{0.9\textwidth}{!}{%
+  \resizebox{0.48\textwidth}{!}{%
   \begin{tabular}{ccccccc}
     \toprule
     \textbf{Epoch} & \textbf{\texttt{loss}} & \textbf{\texttt{mae}} & \textbf{\texttt{accuracy}} & \textbf{\texttt{val\_loss}} & \textbf{\texttt{val\_mae}} & \textbf{\texttt{val\_accuracy}} \\
@@ -417,9 +418,9 @@ The training results, presented in Tables~\ref{tab:resultados_treinamento} and~\
     10 & 0.0137 & 0.0904 & 0.9233 & 0.0406 & 0.1391 & 0.8431 \\
     \bottomrule
   \end{tabular}}
-\end{table*}
+\end{table}
 
-\begin{table}[ht]
+\begin{table}[H]
   \centering
   \caption{Test Data Evaluation}
   \label{tab:avaliacao_teste}
@@ -449,10 +450,6 @@ The CNN approach demonstrates promising results, achieving 80.39\% accuracy on t
 Comparing the two approaches, Bayesian optimisation provides interpretable results and systematic exploration of parameter space, but is limited by its sequential nature and single-objective optimisation. The CNN approach offers the potential for real-time prediction from single images and can capture complex relationships between image features and aberration coefficients, but requires a larger dataset for optimal performance. Both methods demonstrate the viability of machine learning for automated aberration correction in HHG systems.\par
 The primary limitation of this work is the small dataset size compared to related studies. Expanding the dataset to thousands of images would likely improve generalisation and reduce overfitting. Future work should also explore: (1) incorporating additional Zernike modes beyond orders 4--6 to capture higher-order aberrations; (2) implementing the predicted coefficients in a closed-loop correction system for real-time adaptive optics; (3) directly comparing CNN performance with Bayesian optimisation on the same experimental setup with identical metrics; (4) investigating transfer learning from simulation data to improve generalisation; (5) exploring multi-objective optimisation that considers both peak intensity and beam quality metrics; and (6) developing hybrid approaches that combine the interpretability of Bayesian optimisation with the speed of CNN prediction.\par
 These results establish a foundation for automated aberration correction in HHG systems, with the potential to significantly improve beam quality and harmonic generation efficiency. The demonstrated ability to predict Zernike coefficients from focal spot images opens possibilities for real-time adaptive optics systems that can automatically maintain optimal beam quality, reducing the need for manual intervention and enabling more efficient use of experimental time.
-
-\section{Acknowledgements} 
-
-We thank the EAFEXP coordination and all professors and teaching assistants for their support and guidance during this project.
 
 \begin{thebibliography}{99}
 
