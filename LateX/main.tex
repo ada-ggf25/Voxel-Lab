@@ -60,7 +60,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-\title{Deep Learning Optimization for High-Power Laser Aberration Correction}
+\title{Deep Learning Optimisation for High-Power Laser Aberration Correction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Author name %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -159,14 +159,14 @@ As shown in Figure~\ref{fig:imagens}, it is possible to manually identify coeffi
 
 
 
-\section{Bayesian Optimization}
+\section{Bayesian Optimisation}
 \label{sec4}
 
 \subsection{The bayesopt Function}
 
 MATLAB's \codeword{bayesopt} function implements Bayesian optimisation, a method for finding optimal hyperparameters by building a probabilistic model of the objective function. The function \codeword{bayesopt(fun,vars)} attempts to find values of \codeword{vars} that minimise \codeword{fun(vars)}. Although designed for minimisation, it can be used for maximisation by negating the objective function.
 
-\subsection{Optimizing The Peak Intensity}
+\subsection{Optimising The Peak Intensity}
 \label{bayesopt}
 
 We adapted a previously developed script to use Bayesian optimisation for optimising the performance of a system comprising a camera, an SLM, and Zernike polynomial-based holographic correction. The objective was to optimise focal spot quality by adjusting the amplitudes of different Zernike modes. Specifically, we optimised five Zernike modes: focus, vertical astigmatism, oblique astigmatism, vertical coma, and horizontal coma.
@@ -184,7 +184,7 @@ Finally, \codeword{bayesopt} performs 30 additional iterations to find the optim
 The Bayesian optimisation approach successfully identified optimal Zernike coefficients for each individual mode. The sequential optimisation strategy allowed us to systematically explore the parameter space, with each mode optimisation providing insight into its individual contribution to focal spot quality. The refinement of search ranges based on individual optima improved the efficiency of the final joint optimisation step.\par
 However, this approach has limitations. The sequential nature means that interactions between different aberration modes are only captured in the final joint optimisation step, potentially missing optimal combinations that require simultaneous adjustment of multiple modes. Additionally, the single objective function (peak intensity) does not capture other important beam quality metrics such as beam shape, Strehl ratio, or encircled energy. Despite these limitations, Bayesian optimisation provided a valuable baseline for comparison with the neural network approach and demonstrated the feasibility of automated optimisation for this system.
 
-\section{Fourier Transform and Harmonics Wavelengths}
+\section{Fourier Transform and Harmonic Wavelengths}
 
 \subsection{New Camera}
 
@@ -311,7 +311,7 @@ We selected a Convolutional Neural Network (CNN) for this task. CNNs are powerfu
 
 We instead use a CNN to learn the mapping between the point spread function (PSF) and Zernike coefficients. Correction is then achieved by applying the negative of the predicted coefficients to the SLM. This approach has been demonstrated previously \cite{jin2018machine}, where Zernike polynomials of orders 4--15 (University of Arizona indexing scheme, shown in Figure~\ref{fig:Scheme_Zernike}) were used for correction.
 
-\subsection{Data Set Script}
+\subsection{Dataset Script}
 \label{script data set 1}
 
 To generate training images, we introduce controlled aberrations by randomly generating Zernike polynomial coefficients of orders 4, 5, and 6 (University of Arizona indexing), which the SLM applies to modify the beam. We restrict our analysis to these orders for simplicity. We exclude piston, tip, and tilt (orders 1--3), as these do not represent true wavefront curvature aberrations.
