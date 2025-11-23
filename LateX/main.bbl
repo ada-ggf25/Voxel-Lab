@@ -1,0 +1,31 @@
+\begin{thebibliography}{1}
+
+\bibitem{PhysRevLett.71.1994}
+P.~B. Corkum.
+\newblock Plasma perspective on strong field multiphoton ionization, Sep 1993.
+
+\bibitem{jin2018machine}
+Yuncheng Jin, Yiye Zhang, Lejia Hu, Haiyang Huang, Qiaoqi Xu, Xinpei Zhu,
+  Limeng Huang, Yao Zheng, Hui-Liang Shen, Wei Gong, et~al.
+\newblock Machine learning guided rapid focusing with sensor-less aberration
+  corrections.
+\newblock {\em Optics express}, 26(23):30162--30171, 2018.
+
+\bibitem{lakshminarayanan2011zernike}
+Vasudevan Lakshminarayanan and Andre Fleck.
+\newblock Zernike polynomials: a guide.
+\newblock {\em Journal of Modern Optics}, 58(7):545--561, 2011.
+
+\bibitem{wang2021deep}
+Kaiqiang Wang, MengMeng Zhang, Ju~Tang, Lingke Wang, Liusen Hu, Xiaoyan Wu, Wei
+  Li, Jianglei Di, Guodong Liu, and Jianlin Zhao.
+\newblock Deep learning wavefront sensing and aberration correction in
+  atmospheric turbulence.
+\newblock {\em PhotoniX}, 2(1):1--11, 2021.
+
+\bibitem{zhong2022high}
+Shiyang Zhong, Yueying Liang, Shuai Wang, Hao Teng, Xinkui He, and Zhiyi Wei.
+\newblock High harmonic generation and application for photoemission
+  spectroscopy in condensed matter, 2022.
+
+\end{thebibliography}
