@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1763911073 "/home/guilhermegrancho/voxel lab/Voxel-Lab/LateX/main.tex" "main.pdf" "main" 1763911074
+["pdflatex"] 1763917189 "/home/guilhermegrancho/voxel lab/Voxel-Lab/LateX/main.tex" "main.pdf" "main" 1763917192
   "/etc/texmf/web2c/texmf.cnf" 1744990057 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/guilhermegrancho/voxel lab/Voxel-Lab/LateX/main.tex" 1763911070 30881 dcdc354a2f03aabb3f19364a47e5fdf2 ""
+  "/home/guilhermegrancho/voxel lab/Voxel-Lab/LateX/main.tex" 1763917170 40773 6201ae42e74ec3a8642ef129644485cc ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -22,6 +22,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1200.tfm" 1136768653 1536 487c9b46984a816c7ed238d0674595c7 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
@@ -40,6 +41,7 @@
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf" 1136768653 2328 6cd7df782b09b29cfc4d93e55b6b9a59 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/zptmcm7m.vf" 1136768653 1132 27520247d3fe18d4266a226b461885c2 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/zptmcm7t.vf" 1136768653 1108 d271d6f9de4122c3f8d3b65666167fac ""
+  "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/zptmcm7v.vf" 1136768653 1012 046369ac6a83af997c3aa05a43256ad5 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/zptmcm7y.vf" 1136768653 964 5673178ff30617b900214de28ab32b38 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -145,9 +147,9 @@
   "Imagens/setup3.png" 1763904291 120496 52c1c745eb02f7e242d0ff278ecf580a ""
   "Imagens/transferir.png" 1763904291 83201 2d079f29bd955d1588956764ae66b71e ""
   "Imagens/transferir_1.png" 1763904291 33409 f56a5a351f7753bca8a007dcdacea31d ""
-  "main.aux" 1763911074 7689 546ef1418eec42cbdf1b811ee08f1b41 "pdflatex"
-  "main.out" 1763911074 2963 25bb7828544884c14d8fa298dc16858c "pdflatex"
-  "main.tex" 1763911070 30881 dcdc354a2f03aabb3f19364a47e5fdf2 ""
+  "main.aux" 1763917192 7825 842dbe37cdf0f921102f29db06aa6ca4 "pdflatex"
+  "main.out" 1763917192 3137 7515e1df1250a45ec7283833b03b605c "pdflatex"
+  "main.tex" 1763917170 40773 6201ae42e74ec3a8642ef129644485cc ""
   (generated)
   "main.aux"
   "main.log"
