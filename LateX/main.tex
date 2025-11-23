@@ -93,7 +93,7 @@ Matias, J.$^{1,2}$; Pereira, J.$^{1,2}$\\ % First Author
 \begin{abstract}
 
 \vspace{-3mm}
-\noindent High harmonic generation (HHG) is a nonlinear process that enables table-top generation of tunable, high-energy, coherent, ultrashort radiation pulses in the extreme ultraviolet (EUV) to soft X-ray range. These pulses find applications in photoemission spectroscopy in condensed matter physics, pump-probe spectroscopy for high-energy-density plasmas, and attosecond science. However, optical aberrations in the high-power laser systems required for HHG degrade beam quality and reduce efficiency. We present a machine learning approach to optimize aberration correction using a spatial light modulator (SLM). We implemented and compared Bayesian optimization and convolutional neural network (CNN) methods to predict optimal Zernike polynomial coefficients for wavefront correction. Our CNN achieved promising results with 80.39\% accuracy on test data, demonstrating the potential for automated aberration correction in HHG systems.
+\noindent High harmonic generation (HHG) is a nonlinear process that enables table-top generation of tunable, high-energy, coherent, ultrashort radiation pulses in the extreme ultraviolet (EUV) to soft X-ray range. These pulses find applications in photoemission spectroscopy in condensed matter physics, pump-probe spectroscopy for high-energy-density plasmas, and attosecond science. However, optical aberrations in the high-power laser systems required for HHG degrade beam quality and reduce efficiency. We present a machine learning approach to optimize aberration correction using a spatial light modulator. We implemented and compared Bayesian optimization and convolutional neural network (CNN) methods to predict optimal Zernike polynomial coefficients for wavefront correction. Our CNN achieved promising results with 80.39\% accuracy on test data, demonstrating the potential for automated aberration correction in HHG systems.
 \end{abstract}
 
 
@@ -110,7 +110,7 @@ Matias, J.$^{1,2}$; Pereira, J.$^{1,2}$\\ % First Author
 
 \section{Introduction}
 High harmonic generation (HHG) is a nonlinear process in which the interaction between a high-intensity laser pulse and a material generates high-order harmonics (typically above the fifth harmonic) of the fundamental laser frequency, producing pulses with frequencies that are integer multiples of the initial pulse frequency. This process enables table-top sources of coherent extreme ultraviolet (EUV) and soft X-ray radiation, which are traditionally only available from large-scale synchrotron facilities.\par
-The process can be understood using the \textbf{three-step model} \cite{PhysRevLett.71.1994}: (1) an electron tunnels out from the atomic potential, which is distorted by the intense laser field; (2) the freed electron is accelerated away from the atom by the driving field; (3) after half a laser period, the electric field reverses direction and accelerates the electron back toward the atomic potential, where it recombines and emits a high-energy photon. The nonlinear nature of this process typically results in pulse durations shorter than the initial driving pulse, enabling applications in \textbf{attosecond physics}, where extremely high temporal resolution is required.\par
+The process can be understood using the three-step model \cite{PhysRevLett.71.1994}: (1) an electron tunnels out from the atomic potential, which is distorted by the intense laser field; (2) the freed electron is accelerated away from the atom by the driving field; (3) after half a laser period, the electric field reverses direction and accelerates the electron back toward the atomic potential, where it recombines and emits a high-energy photon. The nonlinear nature of this process typically results in pulse durations shorter than the initial driving pulse, enabling applications in attosecond physics, where extremely high temporal resolution is required.\par
 HHG finds diverse applications across multiple scientific domains. In condensed matter physics, HHG-based photoemission spectroscopy enables investigation of electronic band structures and ultrafast dynamics in materials \cite{zhong2022high}. In plasma physics, pump-probe spectroscopy using HHG sources allows characterization of high-energy-density plasmas with unprecedented temporal resolution. The coherent, tunable nature of HHG sources also makes them valuable for imaging applications, where the short wavelength enables nanoscale resolution. However, the efficiency of HHG is critically dependent on the quality of the driving laser beam, making aberration correction essential for optimizing harmonic yield.\par
 
 \section{Motivation}
@@ -120,7 +120,7 @@ These aberrations can be modelled using Zernike polynomials \cite{lakshminarayan
 \Phi(\rho,\theta) = \sum_{n,m} a_{nm} Z_n^m(\rho,\theta),
 \end{equation}
 where $Z_n^m$ are the Zernike polynomials, $a_{nm}$ are the coefficients, and $(\rho,\theta)$ are normalized polar coordinates. Zernike polynomials are widely used in adaptive optics due to their physical interpretability and orthogonality properties.\par
-To correct these aberrations, we employ a \textbf{spatial light modulator (SLM)} as a controllable wavefront correction device. The SLM functions as a programmable diffractive element, composed of 1000$\times$1000 pixels, where each pixel's refractive index (or phase delay) can be controlled via an applied voltage. By configuring the voltage pattern across the SLM to apply the negative of the measured aberration, it can effectively flatten an aberrated wavefront, compensating for optical distortions introduced by the system. The phase modulation $\phi(x,y)$ applied by the SLM is related to the voltage $V(x,y)$ through the device's transfer function, typically linear for small modulations.\par
+To correct these aberrations, we employ a spatial light modulator (SLM) as a controllable wavefront correction device. The SLM functions as a programmable diffractive element, composed of 1000$\times$1000 pixels, where each pixel's refractive index (or phase delay) can be controlled via an applied voltage. By configuring the voltage pattern across the SLM to apply the negative of the measured aberration, it can effectively flatten an aberrated wavefront, compensating for optical distortions introduced by the system. The phase modulation $\phi(x,y)$ applied by the SLM is related to the voltage $V(x,y)$ through the device's transfer function, typically linear for small modulations.\par
 The core objective of this work is the development, testing, and implementation of machine learning methods to optimize the SLM voltage patterns for optimal laser focusing, thereby maximizing HHG efficiency. Traditional manual optimization methods are time-consuming and impractical for high-dimensional parameter spaces, motivating the use of automated optimization techniques.
 
 
@@ -342,7 +342,7 @@ The neural network architecture is crucial for the model's ability to extract an
   \label{fig:Neural_Network_Architecture}
 \end{figure}
 
-    \textbf{1) Convolutional and Pooling Layers:}
+    1) Convolutional and Pooling Layers:
     \begin{itemize}
         \item The first convolutional layer has 32 filters of size $3 \times 3$ with ReLU activation.
         \item A max-pooling layer (\codeword{MaxPooling2D}) with pool size $2 \times 2$ reduces dimensionality.
@@ -351,13 +351,13 @@ The neural network architecture is crucial for the model's ability to extract an
         \item The third convolutional layer has 64 filters of size $3 \times 3$ with ReLU activation.
     \end{itemize}
     
-    \textbf{2) Dense Layers:}
+    2) Dense Layers:
     \begin{itemize}
         \item The convolutional output is flattened to a one-dimensional vector.
         \item A dense layer with 64 neurons and ReLU activation processes the flattened features.
     \end{itemize}
     
-    \textbf{3) Output Layer:}
+    3) Output Layer:
     \begin{itemize}
         \item The output layer has 3 neurons, corresponding to the three Zernike coefficients to be predicted.
         \item Linear activation is used, as this is a regression task.

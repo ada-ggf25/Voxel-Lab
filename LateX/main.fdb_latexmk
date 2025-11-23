@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1763926495 "/home/guilhermegrancho/voxel lab/Voxel-Lab/LateX/main.tex" "main.pdf" "main" 1763926496
+["pdflatex"] 1763927277 "/home/guilhermegrancho/voxel lab/Voxel-Lab/LateX/main.tex" "main.pdf" "main" 1763927281
   "/etc/texmf/web2c/texmf.cnf" 1744990057 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/guilhermegrancho/voxel lab/Voxel-Lab/LateX/main.tex" 1763926492 41040 f528c7cae5c277506f6f9f506820644f ""
+  "/home/guilhermegrancho/voxel lab/Voxel-Lab/LateX/main.tex" 1763927235 40980 18f1f85d5f7fda6b6e9cf2b163f7360f ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -146,9 +146,9 @@
   "Imagens/setup3.png" 1763925077 120496 52c1c745eb02f7e242d0ff278ecf580a ""
   "Imagens/transferir.png" 1763925077 83201 2d079f29bd955d1588956764ae66b71e ""
   "Imagens/transferir_1.png" 1763925077 33409 f56a5a351f7753bca8a007dcdacea31d ""
-  "main.aux" 1763926496 8954 1eccc46a04a3da3ec85b824bd5c62e7f "pdflatex"
-  "main.out" 1763926496 3000 3c74f2dfbc6eee2d7bb4641d72cf18a1 "pdflatex"
-  "main.tex" 1763926492 41040 f528c7cae5c277506f6f9f506820644f ""
+  "main.aux" 1763927280 8954 1eccc46a04a3da3ec85b824bd5c62e7f "pdflatex"
+  "main.out" 1763927280 3000 3c74f2dfbc6eee2d7bb4641d72cf18a1 "pdflatex"
+  "main.tex" 1763927235 40980 18f1f85d5f7fda6b6e9cf2b163f7360f ""
   (generated)
   "main.aux"
   "main.log"
