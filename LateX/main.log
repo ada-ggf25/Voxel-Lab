@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.19)  23 NOV 2025 17:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.4.19)  23 NOV 2025 17:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -523,24 +523,24 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count311
@@ -560,7 +560,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 81.
+Package hyperref Info: Link coloring OFF on input line 82.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -570,9 +570,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 81.
-LaTeX Info: Redefining \pageref on input line 81.
-LaTeX Info: Redefining \nameref on input line 81.
+LaTeX Info: Redefining \ref on input line 82.
+LaTeX Info: Redefining \pageref on input line 82.
+LaTeX Info: Redefining \nameref on input line 82.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -617,162 +617,153 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 84.
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 85.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 84.
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 85.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 84.
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 85.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 84.
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 85.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 84.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 85.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
-
-Overfull \hbox (59.5363pt too wide) in paragraph at lines 84--84
- [][] 
- []
-
-[1
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
+ [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 117.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 118.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 117.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 118.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 117.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 118.
  [2]
 <Imagens/setup3.png, id=114, 791.95876pt x 560.0925pt>
 File: Imagens/setup3.png Graphic file (type png)
 <use Imagens/setup3.png>
-Package pdftex.def Info: Imagens/setup3.png  used on input line 132.
+Package pdftex.def Info: Imagens/setup3.png  used on input line 133.
 (pdftex.def)             Requested size: 313.69025pt x 221.85371pt.
 
-Underfull \hbox (badness 5245) in paragraph at lines 137--138
+Underfull \hbox (badness 5245) in paragraph at lines 138--139
 []\T1/ptm/m/n/12 After HHG was es-tab-lished, the
  []
 
 <Imagens/hhg_vs_oa.png, id=116, 624.3325pt x 479.7925pt>
 File: Imagens/hhg_vs_oa.png Graphic file (type png)
 <use Imagens/hhg_vs_oa.png>
-Package pdftex.def Info: Imagens/hhg_vs_oa.png  used on input line 141.
+Package pdftex.def Info: Imagens/hhg_vs_oa.png  used on input line 142.
 (pdftex.def)             Requested size: 204.9466pt x 157.4974pt.
 <Imagens/240111_PM035132MS781_ob_ast_0.18.jpg, id=117, 2055.68pt x 2059.695pt>
 File: Imagens/240111_PM035132MS781_ob_ast_0.18.jpg Graphic file (type jpg)
 <use Imagens/240111_PM035132MS781_ob_ast_0.18.jpg>
-Package pdftex.def Info: Imagens/240111_PM035132MS781_ob_ast_0.18.jpg  used on input line 143.
+Package pdftex.def Info: Imagens/240111_PM035132MS781_ob_ast_0.18.jpg  used on input line 144.
 (pdftex.def)             Requested size: 204.9466pt x 205.32156pt.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 159.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 160.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
 \T1/ptm/m/n/12 for find-ing op-ti-mal hy-per-pa-ram-e-ters
  []
 
-
-Package multicol Warning: I moved some lines to the next page.
-(multicol)                Footnotes on page 3 might be wrong on input line 165.
-
 [3]
-Underfull \hbox (badness 7168) in paragraph at lines 168--169
+Underfull \hbox (badness 7168) in paragraph at lines 169--170
 \T1/ptm/m/n/12 im-age, and an op-ti-mis-able vari-able
  []
 
 [4 <./Imagens/setup3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
 []\T1/ptm/b/n/17.28 Fourier Trans-form
  []
 
 [5 <./Imagens/hhg_vs_oa.png> <./Imagens/240111_PM035132MS781_ob_ast_0.18.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
 []\T1/ptm/b/n/14.4 Applying the Fourier
  []
 
 <Imagens/primeira.png, id=142, 281.55188pt x 281.55188pt>
 File: Imagens/primeira.png Graphic file (type png)
 <use Imagens/primeira.png>
-Package pdftex.def Info: Imagens/primeira.png  used on input line 192.
+Package pdftex.def Info: Imagens/primeira.png  used on input line 193.
 (pdftex.def)             Requested size: 204.9466pt x 204.94687pt.
 <Imagens/fourier.png, id=144, 335.00156pt x 335.00156pt>
 File: Imagens/fourier.png Graphic file (type png)
 <use Imagens/fourier.png>
-Package pdftex.def Info: Imagens/fourier.png  used on input line 194.
+Package pdftex.def Info: Imagens/fourier.png  used on input line 195.
 (pdftex.def)             Requested size: 204.9466pt x 204.9436pt.
 <Imagens/reta.jpg, id=148, 572.1375pt x 572.1375pt>
 File: Imagens/reta.jpg Graphic file (type jpg)
 <use Imagens/reta.jpg>
-Package pdftex.def Info: Imagens/reta.jpg  used on input line 210.
+Package pdftex.def Info: Imagens/reta.jpg  used on input line 211.
 (pdftex.def)             Requested size: 204.9466pt x 204.9479pt.
 <Imagens/peaks.png, id=149, 620.3175pt x 397.485pt>
 File: Imagens/peaks.png Graphic file (type png)
 <use Imagens/peaks.png>
-Package pdftex.def Info: Imagens/peaks.png  used on input line 212.
+Package pdftex.def Info: Imagens/peaks.png  used on input line 213.
 (pdftex.def)             Requested size: 204.9466pt x 131.32208pt.
 [6] [7 <./Imagens/primeira.png> <./Imagens/fourier.png>]
-<Imagens/NN_Train_Img1.jpg, id=175, 260.47313pt x 182.18062pt>
+<Imagens/NN_Train_Img1.jpg, id=174, 260.47313pt x 182.18062pt>
 File: Imagens/NN_Train_Img1.jpg Graphic file (type jpg)
 <use Imagens/NN_Train_Img1.jpg>
-Package pdftex.def Info: Imagens/NN_Train_Img1.jpg  used on input line 306.
+Package pdftex.def Info: Imagens/NN_Train_Img1.jpg  used on input line 307.
 (pdftex.def)             Requested size: 209.12683pt x 146.26729pt.
  [8 <./Imagens/reta.jpg> <./Imagens/peaks.png>]
 <Imagens/transferir.png, id=187, 422.57875pt x 962.59625pt>
 File: Imagens/transferir.png Graphic file (type png)
 <use Imagens/transferir.png>
-Package pdftex.def Info: Imagens/transferir.png  used on input line 321.
+Package pdftex.def Info: Imagens/transferir.png  used on input line 322.
 (pdftex.def)             Requested size: 313.69025pt x 714.57204pt.
 
 
-LaTeX Warning: Float too large for page by 81.48064pt on input line 324.
+LaTeX Warning: Float too large for page by 81.48064pt on input line 325.
 
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 328.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 329.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Overfull \hbox (13.14421pt too wide) in paragraph at lines 329--330
+Overfull \hbox (13.14421pt too wide) in paragraph at lines 330--331
 []\T1/ptm/m/n/12 A max-pooling layer ([]\T1/cmtt/m/n/12 MaxPooling2D[]\T1/ptm/m/n/12 )
  []
 
 [9 <./Imagens/NN_Train_Img1.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 349--349
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
 []\T1/ptm/b/n/14.4 Hyperparameters and
  []
 
 
-LaTeX Warning: Reference `tab:avaliacao_teste' on page 10 undefined on input line 365.
+LaTeX Warning: Reference `tab:avaliacao_teste' on page 10 undefined on input line 366.
 
 
-LaTeX Warning: Reference `tab:avaliacao_teste' on page 10 undefined on input line 365.
+LaTeX Warning: Reference `tab:avaliacao_teste' on page 10 undefined on input line 366.
 
 <Imagens/transferir_1.png, id=196, 409.7709pt x 330.2739pt>
 File: Imagens/transferir_1.png Graphic file (type png)
 <use Imagens/transferir_1.png>
-Package pdftex.def Info: Imagens/transferir_1.png  used on input line 369.
+Package pdftex.def Info: Imagens/transferir_1.png  used on input line 370.
 (pdftex.def)             Requested size: 313.69025pt x 252.84515pt.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 394.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 395.
 
 Package multicol Warning: Floats and marginpars not allowed inside `multicols' environment!.
 
@@ -780,24 +771,24 @@ Package multicol Warning: Floats and marginpars not allowed inside `multicols' e
 Package multicol Warning: Floats and marginpars not allowed inside `multicols' environment!.
 
 [10] [11]
-Underfull \hbox (badness 6047) in paragraph at lines 423--423
+Underfull \hbox (badness 6047) in paragraph at lines 424--424
 []\T1/ptm/m/n/12 The CNN ap-proach demon-strates
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 424--424
+Underfull \hbox (badness 10000) in paragraph at lines 425--425
 []\T1/ptm/m/n/12 Comparing the two ap-proaches,
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
+Underfull \hbox (badness 10000) in paragraph at lines 439--440
 []\T1/ptm/m/n/12 LAKSHMINARAYANAN, V.;
  []
 
 <Imagens/setup1.png, id=211, 791.95876pt x 560.0925pt>
 File: Imagens/setup1.png Graphic file (type png)
 <use Imagens/setup1.png>
-Package pdftex.def Info: Imagens/setup1.png  used on input line 454.
+Package pdftex.def Info: Imagens/setup1.png  used on input line 455.
 (pdftex.def)             Requested size: 209.12683pt x 147.89392pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -805,7 +796,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Imagens/Zernike.jpeg, id=212, 789.95125pt x 793.96625pt>
 File: Imagens/Zernike.jpeg Graphic file (type jpg)
 <use Imagens/Zernike.jpeg>
-Package pdftex.def Info: Imagens/Zernike.jpeg  used on input line 461.
+Package pdftex.def Info: Imagens/Zernike.jpeg  used on input line 462.
 (pdftex.def)             Requested size: 209.12683pt x 210.18198pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -820,13 +811,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  14430 strings out of 478287
  229760 string characters out of 5849289
- 547298 words of memory out of 5000000
+ 546299 words of memory out of 5000000
  32281 multiletter control sequences out of 15000+600000
  549337 words of font info for 159 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,12n,63p,1532b,711s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,63p,1532b,651s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (16 pages, 4103242 bytes).
+Output written on main.pdf (16 pages, 4103197 bytes).
 PDF statistics:
  293 PDF objects out of 1000 (max. 8388607)
  235 compressed objects within 3 object streams
