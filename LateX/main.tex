@@ -128,23 +128,31 @@ The core objective of this work is the development, testing, and implementation 
 An initial simplified setup was used for developing and testing the optimisation algorithms. This setup comprised lenses, mirrors, the SLM, a laser, and a camera. The laser beam passed through several lenses to introduce controlled aberrations, then through the SLM for correction, and was finally focused onto a camera for characterisation. This simplified configuration allowed rapid iteration and testing of algorithms before integration into the full HHG system.\par
 
 The main experimental setup was the existing HHG system, into which the SLM was integrated. A high-power infrared pulsed laser (wavelength $\lambda = 800$~nm, pulse duration $\sim$30~fs, repetition rate 1~kHz) was directed into a vacuum chamber, where it was focused onto a gas cell containing krypton at pressures of $\sim$100~mbar to generate high-order harmonics. The laser power was controlled using an attenuator, allowing adjustment of the intensity incident on the gas cell. At the end of the vacuum chamber, a Greateyes UV camera (sensitive in the XUV range) was used for detection and visualisation of the harmonics, providing data for the machine learning algorithms. The optical system included several lenses, mirrors, and other optical components, in addition to the SLM. Key components included: an attenuator for controlling laser intensity; several irises for alignment and intensity control, as well as selection of the correct diffracted order\footnote{The SLM acts as a diffractive element, producing multiple diffracted orders (the zeroth order is undiffracted). We ensured only the first-order diffracted beam entered the vacuum chamber, blocking other orders with an iris.}; and a beam splitter that directed a portion of the laser beam to a Thorlabs camera for initial optimisation algorithms that did not yet utilise data from the Greateyes UV camera. A schematic diagram of the setup is shown in Figure~\ref{fig:setupHHG}.\par
-\begin{figure*}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{Imagens/setup3.png}
+  \includegraphics[width=0.40\textwidth]{Imagens/setup3.png}
   \caption{Final setup for HHG with SLM. The gas cell contains krypton. Filters remove all wavelengths from the beam post-HHG (represented in pink), except those corresponding to high-order harmonics in the XUV range (represented in purple). The dashed orange lines represent unwanted diffracted orders from the SLM, which are blocked by an iris.}
   \label{fig:setupHHG}
-\end{figure*}
+\end{figure}
 Initial integration of the SLM into the HHG system involved manual optimisation using data from the Thorlabs camera, with direct adjustment of aberration coefficients in the SLM settings.\par
 After HHG was established, the oblique astigmatism coefficient in the SLM was swept from 0.03 to 0.24 in increments of 0.03. The data collected from the Greateyes camera were analysed to produce the results shown in Figure~\ref{fig:imagens}.
 
-\begin{figure*}[ht]
+\begin{figure}[H]
   \centering
-  \subfigure[Total HHG signal as a function of oblique astigmatism coefficient.]{\includegraphics[width=0.49\textwidth]{Imagens/hhg_vs_oa.png}}
-  \hfill
-  \subfigure[Intensity map for oblique astigmatism coefficient of 0.18.]{\includegraphics[width=0.49\textwidth]{Imagens/240111_PM035132MS781_ob_ast_0.18.jpg}}
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagens/hhg_vs_oa.png}
+    \caption{Total HHG signal as a function of oblique astigmatism coefficient.}
+  \end{subfigure}
+  \vspace{0.5cm}
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagens/240111_PM035132MS781_ob_ast_0.18.jpg}
+    \caption{Intensity map for oblique astigmatism coefficient of 0.18.}
+  \end{subfigure}
   \caption{Manual optimisation results showing the effect of oblique astigmatism on HHG signal.}
   \label{fig:imagens}
-\end{figure*}
+\end{figure}
 
 As shown in Figure~\ref{fig:imagens}, it is possible to manually identify coefficients that significantly affect the total signal. However, for higher-dimensional optimisation problems (with many parameters beyond oblique astigmatism), this manual approach becomes impractical. To accelerate this process, we implemented machine learning approaches, detailed in Sections~\ref{sec4} and~\ref{sec6}.
 
@@ -188,14 +196,22 @@ In this section, we analyse the frequencies and wavelengths of the harmonics gen
 \subsection{Applying the Fourier Transform}
 
 Using the ALEX-i camera, we acquired a large dataset of images from the harmonic system. A representative example is shown in Figure~\ref{fig:fourier_pair}.
-\begin{figure*}[ht]
+\begin{figure}[H]
   \centering
-  \subfigure[Harmonic signal acquired with the ALEX-i camera.]{\includegraphics[width=0.49\textwidth]{Imagens/primeira.png}}
-  \hfill
-  \subfigure[Two-dimensional spatial Fourier transform of the harmonic signal.]{\includegraphics[width=0.49\textwidth]{Imagens/fourier.png}}
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagens/primeira.png}
+    \caption{Harmonic signal acquired with the ALEX-i camera.}
+  \end{subfigure}
+  \vspace{0.5cm}
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagens/fourier.png}
+    \caption{Two-dimensional spatial Fourier transform of the harmonic signal.}
+  \end{subfigure}
   \caption{Harmonic signal and its Fourier transform.}
   \label{fig:fourier_pair}
-\end{figure*}
+\end{figure}
 Close inspection reveals at least two distinct frequencies in the harmonic signal, evident from the different spacings between the vertical interference fringes. For an interference pattern from multiple wavelengths, the fringe spacing is given by
 \begin{equation}
 w_{i} = z \frac{\lambda_{i}}{d},
@@ -206,14 +222,22 @@ where $z \approx 3$~m is the distance between the source and the camera, and $d 
 
 The Fourier transform reveals peaks corresponding to spatial frequencies $k_{i} = 2\pi/w_{i}$. We measure the intensity of each peak within the region of interest (indicated by the red box in Figure~\ref{fig:fourier_pair}) to determine the peak separations. To quantify $k_{i}$, we extract the intensity profile along a line that best captures the interference pattern in the two-dimensional Fourier transform, as shown in Figure~\ref{fig:fourier_analysis}.
 
-\begin{figure*}[ht]
+\begin{figure}[H]
   \centering
-  \subfigure[Line extraction in Fourier space for peak analysis.]{\includegraphics[width=0.49\textwidth]{Imagens/reta.jpg}}
-  \hfill
-  \subfigure[Intensity profile along the extracted line showing distinct peaks.]{\includegraphics[width=0.49\textwidth]{Imagens/peaks.png}}
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagens/reta.jpg}
+    \caption{Line extraction in Fourier space for peak analysis.}
+  \end{subfigure}
+  \vspace{0.5cm}
+  \begin{subfigure}[b]{0.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Imagens/peaks.png}
+    \caption{Intensity profile along the extracted line showing distinct peaks.}
+  \end{subfigure}
   \caption{Fourier space analysis for wavelength determination.}
   \label{fig:fourier_analysis}
-\end{figure*}
+\end{figure}
 
 From the intensity profile (Figure~\ref{fig:fourier_analysis}b), we can directly measure $k_{i}$ values and determine the wavelengths present in the harmonic spectrum. To calculate $k_{i}$, we identify peak pixel indices and use the ALEX-i camera specifications (pixel pitch of 13.5~$\mu$m) to convert to spatial frequency. Analysis of our dataset yielded the results shown in Table~\ref{tab:tabfourier}:
 
@@ -302,12 +326,12 @@ A critical preprocessing step is selecting a single spot from the duplicated las
 
 This preprocessing enables us to substantially increase the effective dataset size. Cases where the two spots are too close and both are captured are excluded from the dataset.
 
-\begin{figure*}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{Imagens/NN_Train_Img1.jpg}
+  \includegraphics[width=0.40\textwidth]{Imagens/NN_Train_Img1.jpg}
   \caption{Example of a preprocessed training image.}
   \label{fig:NN_Train_Img}
-\end{figure*}
+\end{figure}
 
 Using this procedure, we generated 506 image--coefficient pairs (PNG images and CSV files containing the corresponding Zernike coefficients) for our dataset. The images were acquired from the HHG setup using a Thorlabs camera, with each image representing a different combination of Zernike coefficients applied via the SLM. The coefficient values were randomly sampled from uniform distributions within reasonable ranges for each mode: focus ($-0.6$ to $-0.2$), vertical astigmatism ($-0.3$ to $0.3$), and oblique astigmatism ($-0.3$ to $0.3$).\par
 We note that our dataset is considerably smaller than those used in related work, which is a significant limitation. For example, Jin et al.~\cite{jin2018machine} used 18,000 images of size 128$\times$128 pixels. The limited dataset size constrains the model's ability to generalise and increases the risk of overfitting. Data augmentation techniques such as rotation, scaling, or noise injection could potentially increase the effective dataset size, though care must be taken to ensure that such augmentations preserve the physical relationship between images and Zernike coefficients.
@@ -317,12 +341,12 @@ We note that our dataset is considerably smaller than those used in related work
 
 The neural network architecture is crucial for the model's ability to extract and comprehend intrinsic patterns in the data. We designed a specific architecture for predicting Zernike coefficients from focal spot images. The network follows a sequential architecture incorporating convolutional, pooling, and dense layers. The detailed configuration is shown in Figure~\ref{fig:Neural Network Architecture}:
 
-\begin{figure*}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{Imagens/transferir.png}
+  \includegraphics[width=0.40\textwidth]{Imagens/transferir.png}
   \caption{Architecture of the convolutional neural network for Zernike coefficient prediction.}
   \label{fig:Neural Network Architecture}
-\end{figure*}
+\end{figure}
 
     \textbf{1) Convolutional and Pooling Layers:}
     \begin{itemize}
@@ -365,12 +389,12 @@ The choice of architecture and hyperparameters represents a balance between mode
 
 The training results, presented in Tables~\ref{tab:resultados_treinamento} and~\ref{tab:avaliacao_teste}, show the evolution of loss, mean absolute error (MAE), and accuracy metrics across training and validation epochs. The final test set evaluation is documented in Table~\ref{tab:avaliacao_teste}. Figure~\ref{fig:Training_Validation_Test_Accuracy} visualises these results, showing promising performance.
 
-\begin{figure*}[ht]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.75\textwidth]{Imagens/transferir_1.png}
+  \includegraphics[width=0.40\textwidth]{Imagens/transferir_1.png}
   \caption{Training, validation, and test accuracy as a function of training epoch.}
   \label{fig:Training_Validation_Test_Accuracy}
-\end{figure*}
+\end{figure}
 
 \begin{table*}[ht]
   \centering
