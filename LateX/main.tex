@@ -66,8 +66,9 @@
 %
 %
 \author{%\large
-Fernandes, G.G.D.$^1$; Alexandrino, D.$^1$; Silva, E.$^1$; Matias, J.$^1$; Pereira, J.$^1$\\ % First Author
+Fernandes, G.G.D.$^{1,2}$; Alexandrino, D.$^{1,2}$; Silva, E.$^{1,2}$; Matias, J.$^{1,2}$; Pereira, J.$^{1,2}$\\ % First Author
 \footnotesize $^1$Instituto Superior Técnico \\ % Institution address
+\footnotesize $^2$Instituto de Plasmas e Fusão Nuclear \\ % Institution address
 %************************************************************************************************************************
  % E-mail address
  %\small  \href{mailto:guilhermegrancho@tecnico.ulisboa.pt}%{guilhermegrancho@tecnico.ulisboa.pt}\\
@@ -201,70 +202,66 @@ When we apply the Fourier transform, we clearly observe peaks corresponding to t
 
 Using the graph above, we can measure directly the values of $k_{i}$, and know the different wavelengths that produced the figure \ref{fig:fourier_pair}. To get the value of $k_{i}$ we look at peaks pixel indexes and using the ALEX-i camera specifications (knowing that the distance of each pixel is 13.5 $\mu m$), it is possible to get the correspondent value of the spatial frequency. Using the dataset we had, we got the following table:
 
-
-\begin{center}
-\begin{minipage}{\columnwidth}
-\centering
-\setlength{\tabcolsep}{2pt}     % less space between columns
-\renewcommand{\arraystretch}{1.1}
-\footnotesize                   % smaller text (optional)
-\resizebox{\textwidth}{!}{%   % ensures it fits in the column
-\begin{tabular}{|c|ccc|cccc|cccc|}
-\hline
-\textbf{Image }& \multicolumn{3}{c|}{1} & \multicolumn{4}{c|}{2} & \multicolumn{4}{c|}{3} \\ \hline
-Peak Pixel Index &
-  \multicolumn{1}{c|}{166} &
-  \multicolumn{1}{c|}{184} &
-  202 &
-  \multicolumn{1}{c|}{182} &
-  \multicolumn{1}{c|}{187} &
-  \multicolumn{1}{c|}{190} &
-  195 &
-  \multicolumn{1}{c|}{168} &
-  \multicolumn{1}{c|}{175} &
-  \multicolumn{1}{c|}{180} &
-  186 \\ \hline
-$k_{i}$ &
-  \multicolumn{1}{c|}{13165} &
-  \multicolumn{1}{c|}{10416} &
-  7813 &
-  \multicolumn{1}{c|}{10706} &
-  \multicolumn{1}{c|}{9982} &
-  \multicolumn{1}{c|}{9548} &
-  8825 &
-  \multicolumn{1}{c|}{12731} &
-  \multicolumn{1}{c|}{11718} &
-  \multicolumn{1}{c|}{10995} &
-  10127 \\ \hline
-$w_{i}$ [mm] &
-  \multicolumn{1}{c|}{0.477} &
-  \multicolumn{1}{c|}{0.603} &
-  0.804 &
-  \multicolumn{1}{c|}{0.587} &
-  \multicolumn{1}{c|}{0.629} &
-  \multicolumn{1}{c|}{0.658} &
-  0.712 &
-  \multicolumn{1}{c|}{0.493} &
-  \multicolumn{1}{c|}{0.536} &
-  \multicolumn{1}{c|}{0.571} &
-  0.621 \\ \hline
-$\lambda$ [nm]&
-  \multicolumn{1}{c|}{11.93} &
-  \multicolumn{1}{c|}{15.08} &
-  20.10 &
-  \multicolumn{1}{c|}{14.68} &
-  \multicolumn{1}{c|}{15.73} &
-  \multicolumn{1}{c|}{16.45} &
-   17.8  &
-  \multicolumn{1}{c|}{12.33} &
-  \multicolumn{1}{c|}{13.4} &
-  \multicolumn{1}{c|}{14.28} &
-  15.53 \\ \hline
-\end{tabular}}
-\captionof{table}{Fourier Transform Analysis.}
-\label{tab:tabfourier}
-\end{minipage}
-\end{center} 
+\begin{table*}[ht]
+  \centering
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.1}
+  \footnotesize
+  \caption{Fourier Transform Analysis.}
+  \label{tab:tabfourier}
+  \begin{tabular}{|c|ccc|cccc|cccc|}
+    \hline
+    \textbf{Image }& \multicolumn{3}{c|}{1} & \multicolumn{4}{c|}{2} & \multicolumn{4}{c|}{3} \\ \hline
+    Peak Pixel Index &
+      \multicolumn{1}{c|}{166} &
+      \multicolumn{1}{c|}{184} &
+      202 &
+      \multicolumn{1}{c|}{182} &
+      \multicolumn{1}{c|}{187} &
+      \multicolumn{1}{c|}{190} &
+      195 &
+      \multicolumn{1}{c|}{168} &
+      \multicolumn{1}{c|}{175} &
+      \multicolumn{1}{c|}{180} &
+      186 \\ \hline
+    $k_{i}$ &
+      \multicolumn{1}{c|}{13165} &
+      \multicolumn{1}{c|}{10416} &
+      7813 &
+      \multicolumn{1}{c|}{10706} &
+      \multicolumn{1}{c|}{9982} &
+      \multicolumn{1}{c|}{9548} &
+      8825 &
+      \multicolumn{1}{c|}{12731} &
+      \multicolumn{1}{c|}{11718} &
+      \multicolumn{1}{c|}{10995} &
+      10127 \\ \hline
+    $w_{i}$ [mm] &
+      \multicolumn{1}{c|}{0.477} &
+      \multicolumn{1}{c|}{0.603} &
+      0.804 &
+      \multicolumn{1}{c|}{0.587} &
+      \multicolumn{1}{c|}{0.629} &
+      \multicolumn{1}{c|}{0.658} &
+      0.712 &
+      \multicolumn{1}{c|}{0.493} &
+      \multicolumn{1}{c|}{0.536} &
+      \multicolumn{1}{c|}{0.571} &
+      0.621 \\ \hline
+    $\lambda$ [nm]&
+      \multicolumn{1}{c|}{11.93} &
+      \multicolumn{1}{c|}{15.08} &
+      20.10 &
+      \multicolumn{1}{c|}{14.68} &
+      \multicolumn{1}{c|}{15.73} &
+      \multicolumn{1}{c|}{16.45} &
+       17.8  &
+      \multicolumn{1}{c|}{12.33} &
+      \multicolumn{1}{c|}{13.4} &
+      \multicolumn{1}{c|}{14.28} &
+      15.53 \\ \hline
+  \end{tabular}
+\end{table*} 
 
 Looking at the table above, we get conflicting results, since the minimum distance between lines is $w_{min} \sim 0.5 mm$ (what we expected), but the evolution of $w_{i}$ and $\lambda_{i}$ isn't constant for all cases. Looking at the values of both the space between the fringes and the wavelength of the harmonics, it's possible to understand that those values don't follow the criteria of an harmonic. In conclusion, the algorithm implemented is great at discovering the values for the $w_{min}$ and $k_{max}$, however due to chaos and noise from the signal, it is very hard to decide which peaks should be considered, creating a bad evolution and determination of the $\lambda$ values.
 
@@ -306,6 +303,12 @@ essential details of this neural architecture.
 
 The adopted neural network model follows a sequential approach and incorporates convolutional, pooling, and dense layers. The detailed configuration of the network is presented thoroughly in Figure \ref{fig:Neural Network Architecture}:
 
+\begin{figure*}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{Imagens/transferir.png}
+  \caption{Neural Network Architecture}
+  \label{fig:Neural Network Architecture}
+\end{figure*}
 
     \textbf{1) Convolutional and Pooling Layers:}
     \begin{itemize}
@@ -352,6 +355,41 @@ The training results of the model, as presented in Tables~\ref{tab:resultados_tr
   \label{fig:Training_Validation_Test_Accuracy}
 \end{figure*}
 
+\begin{table*}[ht]
+  \centering
+  \caption{Training Results}
+  \label{tab:resultados_treinamento}
+  \resizebox{0.9\textwidth}{!}{%
+  \begin{tabular}{ccccccc}
+    \toprule
+    \textbf{Epoch} & \textbf{\texttt{loss}} & \textbf{\texttt{mae}} & \textbf{\texttt{accuracy}} & \textbf{\texttt{val\_loss}} & \textbf{\texttt{val\_mae}} & \textbf{\texttt{val\_accuracy}} \\
+    \midrule
+    1 & 311.5240 & 3.6678 & 0.4431 & 0.2435 & 0.4036 & 0.5098 \\
+    2 & 0.1999 & 0.3622 & 0.6559 & 0.1515 & 0.3165 & 0.8039 \\
+    3 & 0.1369 & 0.2917 & 0.7426 & 0.1329 & 0.2934 & 0.7647 \\
+    4 & 0.1061 & 0.2555 & 0.7995 & 0.0951 & 0.2453 & 0.7843 \\
+    5 & 0.0663 & 0.2026 & 0.8119 & 0.0721 & 0.2039 & 0.8235 \\
+    6 & 0.0468 & 0.1649 & 0.8441 & 0.0677 & 0.1995 & 0.7647 \\
+    7 & 0.0307 & 0.1352 & 0.8564 & 0.0355 & 0.1449 & 0.8039 \\
+    8 & 0.0219 & 0.1140 & 0.8911 & 0.0411 & 0.1450 & 0.8431 \\
+    9 & 0.0155 & 0.0957 & 0.8985 & 0.0392 & 0.1440 & 0.8627 \\
+    10 & 0.0137 & 0.0904 & 0.9233 & 0.0406 & 0.1391 & 0.8431 \\
+    \bottomrule
+  \end{tabular}}
+\end{table*}
+
+\begin{table}[ht]
+  \centering
+  \caption{Test Data Evaluation}
+  \label{tab:avaliacao_teste}
+  \begin{tabular}{ccc}
+    \toprule
+    \textbf{\texttt{loss}} & \textbf{\texttt{mae}} & \textbf{\texttt{accuracy}} \\
+    \midrule
+    0.0315 & 0.1208 & 0.8039 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 The results indicate significant progress of the model during training, highlighting the learning capability of the neural network. Evaluation of test data provides critical insight into the model's generalization to new instances.
 
@@ -401,49 +439,6 @@ If it is of interest to the reader, additional figures and tables are shown belo
   \caption{Zernike Polynomials Scheme}
   \label{fig:Scheme_Zernike}
 \end{figure}
-
-\begin{figure}[!h]
-  \centering
-  \includegraphics[width=0.5\textwidth]{Imagens/transferir.png}
-  \caption{Neural Network Architecture}
-  \label{fig:Neural Network Architecture}
-\end{figure}
-
-\begin{table}[!h]
-  \centering
-  \caption{Training Results}
-  \label{tab:resultados_treinamento}
-  \resizebox{\textwidth}{!}{%
-  \begin{tabular}{ccccccc}
-    \toprule
-    \textbf{Epoch} & \textbf{\texttt{loss}} & \textbf{\texttt{mae}} & \textbf{\texttt{accuracy}} & \textbf{\texttt{val\_loss}} & \textbf{\texttt{val\_mae}} & \textbf{\texttt{val\_accuracy}} \\
-    \midrule
-    1 & 311.5240 & 3.6678 & 0.4431 & 0.2435 & 0.4036 & 0.5098 \\
-    2 & 0.1999 & 0.3622 & 0.6559 & 0.1515 & 0.3165 & 0.8039 \\
-    3 & 0.1369 & 0.2917 & 0.7426 & 0.1329 & 0.2934 & 0.7647 \\
-    4 & 0.1061 & 0.2555 & 0.7995 & 0.0951 & 0.2453 & 0.7843 \\
-    5 & 0.0663 & 0.2026 & 0.8119 & 0.0721 & 0.2039 & 0.8235 \\
-    6 & 0.0468 & 0.1649 & 0.8441 & 0.0677 & 0.1995 & 0.7647 \\
-    7 & 0.0307 & 0.1352 & 0.8564 & 0.0355 & 0.1449 & 0.8039 \\
-    8 & 0.0219 & 0.1140 & 0.8911 & 0.0411 & 0.1450 & 0.8431 \\
-    9 & 0.0155 & 0.0957 & 0.8985 & 0.0392 & 0.1440 & 0.8627 \\
-    10 & 0.0137 & 0.0904 & 0.9233 & 0.0406 & 0.1391 & 0.8431 \\
-    \bottomrule
-  \end{tabular}}
-\end{table}
-
-\begin{table}[!h]
-  \centering
-  \caption{Test Data Evaluation}
-  \label{tab:avaliacao_teste}
-  \begin{tabular}{ccc}
-    \toprule
-    \textbf{\texttt{loss}} & \textbf{\texttt{mae}} & \textbf{\texttt{accuracy}} \\
-    \midrule
-    0.0315 & 0.1208 & 0.8039 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
 
 \end{document}
 
