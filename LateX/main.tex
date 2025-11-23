@@ -47,7 +47,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \lhead{}%Cabeçalho vazio à esquerda
 \rhead{} % Right header
-\chead{} % Centre header
+\chead{} % Center header
 \renewcommand{\headrulewidth}{0pt} % Remove header rule
 
 
@@ -60,7 +60,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-\title{Deep Learning Optimisation for High-Power Laser Aberration Correction}
+\title{Deep Learning Optimization for High-Power Laser Aberration Correction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Author name %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -93,7 +93,7 @@ Matias, J.$^{1,2}$; Pereira, J.$^{1,2}$\\ % First Author
 \begin{abstract}
 
 \vspace{-3mm}
-\noindent High harmonic generation (HHG) is a nonlinear process that enables table-top generation of tunable, high-energy, coherent, ultrashort radiation pulses in the extreme ultraviolet (EUV) to soft X-ray range. These pulses find applications in photoemission spectroscopy in condensed matter physics, pump-probe spectroscopy for high-energy-density plasmas, and attosecond science. However, optical aberrations in the high-power laser systems required for HHG degrade beam quality and reduce efficiency. We present a machine learning approach to optimise aberration correction using a spatial light modulator (SLM). We implemented and compared Bayesian optimisation and convolutional neural network (CNN) methods to predict optimal Zernike polynomial coefficients for wavefront correction. Our CNN achieved promising results with 80.39\% accuracy on test data, demonstrating the potential for automated aberration correction in HHG systems.
+\noindent High harmonic generation (HHG) is a nonlinear process that enables table-top generation of tunable, high-energy, coherent, ultrashort radiation pulses in the extreme ultraviolet (EUV) to soft X-ray range. These pulses find applications in photoemission spectroscopy in condensed matter physics, pump-probe spectroscopy for high-energy-density plasmas, and attosecond science. However, optical aberrations in the high-power laser systems required for HHG degrade beam quality and reduce efficiency. We present a machine learning approach to optimize aberration correction using a spatial light modulator (SLM). We implemented and compared Bayesian optimization and convolutional neural network (CNN) methods to predict optimal Zernike polynomial coefficients for wavefront correction. Our CNN achieved promising results with 80.39\% accuracy on test data, demonstrating the potential for automated aberration correction in HHG systems.
 \end{abstract}
 
 
@@ -111,7 +111,7 @@ Matias, J.$^{1,2}$; Pereira, J.$^{1,2}$\\ % First Author
 \section{Introduction}
 High harmonic generation (HHG) is a nonlinear process in which the interaction between a high-intensity laser pulse and a material generates high-order harmonics (typically above the fifth harmonic) of the fundamental laser frequency, producing pulses with frequencies that are integer multiples of the initial pulse frequency. This process enables table-top sources of coherent extreme ultraviolet (EUV) and soft X-ray radiation, which are traditionally only available from large-scale synchrotron facilities.\par
 The process can be understood using the \textbf{three-step model} \cite{PhysRevLett.71.1994}: (1) an electron tunnels out from the atomic potential, which is distorted by the intense laser field; (2) the freed electron is accelerated away from the atom by the driving field; (3) after half a laser period, the electric field reverses direction and accelerates the electron back toward the atomic potential, where it recombines and emits a high-energy photon. The nonlinear nature of this process typically results in pulse durations shorter than the initial driving pulse, enabling applications in \textbf{attosecond physics}, where extremely high temporal resolution is required.\par
-HHG finds diverse applications across multiple scientific domains. In condensed matter physics, HHG-based photoemission spectroscopy enables investigation of electronic band structures and ultrafast dynamics in materials \cite{zhong2022high}. In plasma physics, pump-probe spectroscopy using HHG sources allows characterisation of high-energy-density plasmas with unprecedented temporal resolution. The coherent, tunable nature of HHG sources also makes them valuable for imaging applications, where the short wavelength enables nanoscale resolution. However, the efficiency of HHG is critically dependent on the quality of the driving laser beam, making aberration correction essential for optimising harmonic yield.\par
+HHG finds diverse applications across multiple scientific domains. In condensed matter physics, HHG-based photoemission spectroscopy enables investigation of electronic band structures and ultrafast dynamics in materials \cite{zhong2022high}. In plasma physics, pump-probe spectroscopy using HHG sources allows characterization of high-energy-density plasmas with unprecedented temporal resolution. The coherent, tunable nature of HHG sources also makes them valuable for imaging applications, where the short wavelength enables nanoscale resolution. However, the efficiency of HHG is critically dependent on the quality of the driving laser beam, making aberration correction essential for optimizing harmonic yield.\par
 
 \section{Motivation}
 HHG requires a high-power laser that must be manipulated and focused to a small spot where the target gas is located. The optical apparatus used for this purpose introduces aberrations that degrade the beam quality and reduce the efficiency of HHG. These aberrations arise from various sources: imperfections in optical components (lenses, mirrors), misalignment, thermal effects, and material inhomogeneities. The resulting wavefront distortions spread the focal spot, reducing peak intensity and degrading the harmonic generation efficiency, which scales nonlinearly with driving field intensity.\par
@@ -119,15 +119,15 @@ These aberrations can be modelled using Zernike polynomials \cite{lakshminarayan
 \begin{equation}
 \Phi(\rho,\theta) = \sum_{n,m} a_{nm} Z_n^m(\rho,\theta),
 \end{equation}
-where $Z_n^m$ are the Zernike polynomials, $a_{nm}$ are the coefficients, and $(\rho,\theta)$ are normalised polar coordinates. Zernike polynomials are widely used in adaptive optics due to their physical interpretability and orthogonality properties.\par
+where $Z_n^m$ are the Zernike polynomials, $a_{nm}$ are the coefficients, and $(\rho,\theta)$ are normalized polar coordinates. Zernike polynomials are widely used in adaptive optics due to their physical interpretability and orthogonality properties.\par
 To correct these aberrations, we employ a \textbf{spatial light modulator (SLM)} as a controllable wavefront correction device. The SLM functions as a programmable diffractive element, composed of 1000$\times$1000 pixels, where each pixel's refractive index (or phase delay) can be controlled via an applied voltage. By configuring the voltage pattern across the SLM to apply the negative of the measured aberration, it can effectively flatten an aberrated wavefront, compensating for optical distortions introduced by the system. The phase modulation $\phi(x,y)$ applied by the SLM is related to the voltage $V(x,y)$ through the device's transfer function, typically linear for small modulations.\par
-The core objective of this work is the development, testing, and implementation of machine learning methods to optimise the SLM voltage patterns for optimal laser focusing, thereby maximising HHG efficiency. Traditional manual optimisation methods are time-consuming and impractical for high-dimensional parameter spaces, motivating the use of automated optimisation techniques.
+The core objective of this work is the development, testing, and implementation of machine learning methods to optimize the SLM voltage patterns for optimal laser focusing, thereby maximizing HHG efficiency. Traditional manual optimization methods are time-consuming and impractical for high-dimensional parameter spaces, motivating the use of automated optimization techniques.
 
 
 \section{Experimental Apparatus}
-An initial simplified setup was used for developing and testing the optimisation algorithms. This setup comprised lenses, mirrors, the SLM, a laser, and a camera. The laser beam passed through several lenses to introduce controlled aberrations, then through the SLM for correction, and was finally focused onto a camera for characterisation. This simplified configuration allowed rapid iteration and testing of algorithms before integration into the full HHG system.\par
+An initial simplified setup was used for developing and testing the optimization algorithms. This setup comprised lenses, mirrors, the SLM, a laser, and a camera. The laser beam passed through several lenses to introduce controlled aberrations, then through the SLM for correction, and was finally focused onto a camera for characterization. This simplified configuration allowed rapid iteration and testing of algorithms before integration into the full HHG system.\par
 
-The main experimental setup was the existing HHG system, into which the SLM was integrated. A high-power infrared pulsed laser (wavelength $\lambda = 800$~nm, pulse duration $\sim$30~fs, repetition rate 1~kHz) was directed into a vacuum chamber, where it was focused onto a gas cell containing krypton at pressures of $\sim$100~mbar to generate high-order harmonics. The laser power was controlled using an attenuator, allowing adjustment of the intensity incident on the gas cell. At the end of the vacuum chamber, a Greateyes UV camera (sensitive in the XUV range) was used for detection and visualisation of the harmonics, providing data for the machine learning algorithms. The optical system included several lenses, mirrors, and other optical components, in addition to the SLM. Key components included: an attenuator for controlling laser intensity; several irises for alignment and intensity control, as well as selection of the correct diffracted order\footnote{The SLM acts as a diffractive element, producing multiple diffracted orders (the zeroth order is undiffracted). We ensured only the first-order diffracted beam entered the vacuum chamber, blocking other orders with an iris.}; and a beam splitter that directed a portion of the laser beam to a Thorlabs camera for initial optimisation algorithms that did not yet utilise data from the Greateyes UV camera. A schematic diagram of the setup is shown in Figure~\ref{fig:setupHHG}.
+The main experimental setup was the existing HHG system, into which the SLM was integrated. A high-power infrared pulsed laser (wavelength $\lambda = 800$~nm, pulse duration $\sim$30~fs, repetition rate 1~kHz) was directed into a vacuum chamber, where it was focused onto a gas cell containing krypton at pressures of $\sim$100~mbar to generate high-order harmonics. The laser power was controlled using an attenuator, allowing adjustment of the intensity incident on the gas cell. At the end of the vacuum chamber, a Greateyes UV camera (sensitive in the XUV range) was used for detection and visualization of the harmonics, providing data for the machine learning algorithms. The optical system included several lenses, mirrors, and other optical components, in addition to the SLM. Key components included: an attenuator for controlling laser intensity; several irises for alignment and intensity control, as well as selection of the correct diffracted order\footnote{The SLM acts as a diffractive element, producing multiple diffracted orders (the zeroth order is undiffracted). We ensured only the first-order diffracted beam entered the vacuum chamber, blocking other orders with an iris.}; and a beam splitter that directed a portion of the laser beam to a Thorlabs camera for initial optimization algorithms that did not yet utilise data from the Greateyes UV camera. A schematic diagram of the setup is shown in Figure~\ref{fig:setupHHG}.
 \vspace*{-3mm}
 \begin{figure}[H]
   \centering
@@ -136,8 +136,8 @@ The main experimental setup was the existing HHG system, into which the SLM was 
   \label{fig:setupHHG}
 \end{figure}
 \vspace*{-3mm}
-Initial integration of the SLM into the HHG system involved manual optimisation using data from the Thorlabs camera, with direct adjustment of aberration coefficients in the SLM settings.\par
-After HHG was established, the oblique astigmatism coefficient in the SLM was swept from 0.03 to 0.24 in increments of 0.03. The data collected from the Greateyes camera were analysed to produce the results shown in Figure~\ref{fig:imagens}.
+Initial integration of the SLM into the HHG system involved manual optimization using data from the Thorlabs camera, with direct adjustment of aberration coefficients in the SLM settings.\par
+After HHG was established, the oblique astigmatism coefficient in the SLM was swept from 0.03 to 0.24 in increments of 0.03. The data collected from the Greateyes camera were analyzed to produce the results shown in Figure~\ref{fig:imagens}.
 
 \begin{figure}[H]
   \centering
@@ -153,27 +153,27 @@ After HHG was established, the oblique astigmatism coefficient in the SLM was sw
   \label{fig:imagens2}
 \end{figure}
 
-As shown in Figure~\ref{fig:imagens}, it is possible to manually identify coefficients that significantly affect the total signal. However, for higher-dimensional optimisation problems (with many parameters beyond oblique astigmatism), this manual approach becomes impractical. To accelerate this process, we implemented machine learning approaches, detailed in Sections~\ref{sec4} and~\ref{sec6}.
+As shown in Figure~\ref{fig:imagens}, it is possible to manually identify coefficients that significantly affect the total signal. However, for higher-dimensional optimization problems (with many parameters beyond oblique astigmatism), this manual approach becomes impractical. To accelerate this process, we implemented machine learning approaches, detailed in Sections~\ref{sec4} and~\ref{sec6}.
 
 
 
 
 
-\section{Bayesian Optimisation}
+\section{Bayesian Optimization}
 \label{sec4}
 
 \subsection{The bayesopt Function}
 
-MATLAB's \codeword{bayesopt} function implements Bayesian optimisation, a method for finding optimal hyperparameters by building a probabilistic model of the objective function. The function \codeword{bayesopt(fun,vars)} attempts to find values of \codeword{vars} that minimise \codeword{fun(vars)}. Although designed for minimisation, it can be used for maximisation by negating the objective function.
+MATLAB's \codeword{bayesopt} function implements Bayesian optimization, a method for finding optimal hyperparameters by building a probabilistic model of the objective function. The function \codeword{bayesopt(fun,vars)} attempts to find values of \codeword{vars} that minimize \codeword{fun(vars)}. Although designed for minimization, it can be used for maximization by negating the objective function.
 
-\subsection{Optimising The Peak Intensity}
+\subsection{Optimizing The Peak Intensity}
 \label{bayesopt}
 
-We adapted a previously developed script to use Bayesian optimisation for optimising the performance of a system comprising a camera, an SLM, and Zernike polynomial-based holographic correction. The objective was to optimise focal spot quality by adjusting the amplitudes of different Zernike modes. Specifically, we optimised five Zernike modes: focus, vertical astigmatism, oblique astigmatism, vertical coma, and horizontal coma.
+We adapted a previously developed script to use Bayesian optimization for optimizing the performance of a system comprising a camera, an SLM, and Zernike polynomial-based holographic correction. The objective was to optimize focal spot quality by adjusting the amplitudes of different Zernike modes. Specifically, we optimized five Zernike modes: focus, vertical astigmatism, oblique astigmatism, vertical coma, and horizontal coma.
 
 The code first initialises the Thorlabs TLCamera, configuring gain and exposure time. The camera's bit depth is used to determine the maximum pixel value (\codeword{maxPixelValue}).
 
-The Bayesian optimisation process is iterative. To optimise the focus mode, we define an objective function \codeword{foc_max_count} that returns the peak intensity detected in a camera image, and an optimisable variable \codeword{Zernikamplitudes_foc} with a specified search range (typically small values near zero, e.g., $[-0.6,-0.2]$) using MATLAB's \codeword{optimizableVariable} function. The \codeword{bayesopt} function then performs 30 iterations, exploring different values within the specified range to maximise \codeword{foc_max_count}. The optimal value is stored in \codeword{opt_focus}. This procedure is repeated for each of the four remaining aberration modes. 
+The Bayesian optimization process is iterative. To optimize the focus mode, we define an objective function \codeword{foc_max_count} that returns the peak intensity detected in a camera image, and an optimizable variable \codeword{Zernikamplitudes_foc} with a specified search range (typically small values near zero, e.g., $[-0.6,-0.2]$) using MATLAB's \codeword{optimizableVariable} function. The \codeword{bayesopt} function then performs 30 iterations, exploring different values within the specified range to maximize \codeword{foc_max_count}. The optimal value is stored in \codeword{opt_focus}. This procedure is repeated for each of the four remaining aberration modes. 
 
 Subsequently, we refine the search ranges for each amplitude based on the individual optima (\codeword{opt_i}, where $i$ = focus, coma1, etc.). We construct a new objective function \codeword{final_max_count} that returns the peak intensity using all five Zernike amplitudes simultaneously.
 
@@ -181,16 +181,16 @@ Finally, \codeword{bayesopt} performs 30 additional iterations to find the optim
 
 \subsection{Results and Discussion}
 
-The Bayesian optimisation approach successfully identified optimal Zernike coefficients for each individual mode. The sequential optimisation strategy allowed us to systematically explore the parameter space, with each mode optimisation providing insight into its individual contribution to focal spot quality. The refinement of search ranges based on individual optima improved the efficiency of the final joint optimisation step.\par
-However, this approach has limitations. The sequential nature means that interactions between different aberration modes are only captured in the final joint optimisation step, potentially missing optimal combinations that require simultaneous adjustment of multiple modes. Additionally, the single objective function (peak intensity) does not capture other important beam quality metrics such as beam shape, Strehl ratio, or encircled energy. Despite these limitations, Bayesian optimisation provided a valuable baseline for comparison with the neural network approach and demonstrated the feasibility of automated optimisation for this system.
+The Bayesian optimization approach successfully identified optimal Zernike coefficients for each individual mode. The sequential optimization strategy allowed us to systematically explore the parameter space, with each mode optimization providing insight into its individual contribution to focal spot quality. The refinement of search ranges based on individual optima improved the efficiency of the final joint optimization step.\par
+However, this approach has limitations. The sequential nature means that interactions between different aberration modes are only captured in the final joint optimization step, potentially missing optimal combinations that require simultaneous adjustment of multiple modes. Additionally, the single objective function (peak intensity) does not capture other important beam quality metrics such as beam shape, Strehl ratio, or encircled energy. Despite these limitations, Bayesian optimization provided a valuable baseline for comparison with the neural network approach and demonstrated the feasibility of automated optimization for this system.
 
 \section{Fourier Transform and Harmonic Wavelengths}
 
 \subsection{New Camera}
 
-We adapted the script described in Section~\ref{bayesopt} to work with the Greateyes camera installed in the vacuum chamber. After analysing the available documentation and extensive testing, we successfully implemented the adaptation. This enabled a similar data acquisition process with improved image quality and resolution, and allowed analysis of data obtained directly from the vacuum chamber.
+We adapted the script described in Section~\ref{bayesopt} to work with the Greateyes camera installed in the vacuum chamber. After analyzing the available documentation and extensive testing, we successfully implemented the adaptation. This enabled a similar data acquisition process with improved image quality and resolution, and allowed analysis of data obtained directly from the vacuum chamber.
 
-In this section, we analyse the frequencies and wavelengths of the harmonics generated in the laser system. After acquiring images with the ALEX-i camera (installed in the vacuum chamber) using the adapted script, we applied two algorithms: first, we computed the two-dimensional spatial Fourier transform of the input image; then, using the Fourier transform as input, we used Python's \codeword{matplotlib} library to measure the distance between peaks in the transform. This analysis enables identification of the wavelengths present in the harmonic spectrum.
+In this section, we analyze the frequencies and wavelengths of the harmonics generated in the laser system. After acquiring images with the ALEX-i camera (installed in the vacuum chamber) using the adapted script, we applied two algorithms: first, we computed the two-dimensional spatial Fourier transform of the input image; then, using the Fourier transform as input, we used Python's \codeword{matplotlib} library to measure the distance between peaks in the transform. This analysis enables identification of the wavelengths present in the harmonic spectrum.
 
 \subsection{Applying the Fourier Transform}
 
@@ -284,15 +284,15 @@ From the intensity profile (Figure~\ref{fig:fourier_peaks}), we can directly mea
     $\lambda$ [nm]&
       \multicolumn{1}{c|}{11.93} &
       \multicolumn{1}{c|}{15.08} &
-      20.10 &
+      \multicolumn{1}{c|}{20.10} &
       \multicolumn{1}{c|}{14.68} &
       \multicolumn{1}{c|}{15.73} &
       \multicolumn{1}{c|}{16.45} &
-       17.8  &
+      \multicolumn{1}{c|}{17.8} &
       \multicolumn{1}{c|}{12.33} &
       \multicolumn{1}{c|}{13.4} &
       \multicolumn{1}{c|}{14.28} &
-      15.53 \\ \hline
+      \multicolumn{1}{c|}{15.53} \\ \hline
   \end{tabular}}
 \end{table} 
 
@@ -305,9 +305,9 @@ The algorithm successfully identifies $w_{\text{min}}$ and $k_{\text{max}}$, ind
 
 \subsection{Motivation}
 
-Bayesian optimisation is a straightforward approach that optimises a single objective function (maximum pixel intensity). We initially attempted to incorporate roundness constraints by applying a modified Gaussian filter that preserves total intensity. However, this approach suffers from information loss, and improved filtered image quality does not necessarily indicate that the SLM is correcting the underlying aberrations. Only filters with $\sigma < 3$ were useful for noise reduction and suppression of sharp pixel intensities. We therefore explored deep neural networks as a more versatile and powerful solution.
+Bayesian optimization is a straightforward approach that optimizes a single objective function (maximum pixel intensity). We initially attempted to incorporate roundness constraints by applying a modified Gaussian filter that preserves total intensity. However, this approach suffers from information loss, and improved filtered image quality does not necessarily indicate that the SLM is correcting the underlying aberrations. Only filters with $\sigma < 3$ were useful for noise reduction and suppression of sharp pixel intensities. We therefore explored deep neural networks as a more versatile and powerful solution.
  
-We selected a Convolutional Neural Network (CNN) for this task. CNNs are powerful deep learning methods for image processing that recognise spatial patterns with translation invariance and extract meaningful features. Previous work has used CNNs to learn the mapping between object intensity distribution and aberration phase, with correction achieved by adding the conjugate of the wavefront aberration \cite{wang2021deep}. However, this approach requires either a Shack--Hartmann sensor for phase reconstruction or training on simulation data, which can lead to generalisation problems.
+We selected a Convolutional Neural Network (CNN) for this task. CNNs are powerful deep learning methods for image processing that recognize spatial patterns with translation invariance and extract meaningful features. Previous work has used CNNs to learn the mapping between object intensity distribution and aberration phase, with correction achieved by adding the conjugate of the wavefront aberration \cite{wang2021deep}. However, this approach requires either a Shack--Hartmann sensor for phase reconstruction or training on simulation data, which can lead to generalization problems.
 
 We instead use a CNN to learn the mapping between the point spread function (PSF) and Zernike coefficients. Correction is then achieved by applying the negative of the predicted coefficients to the SLM. This approach has been demonstrated previously \cite{jin2018machine}, where Zernike polynomials of orders 4--15 (University of Arizona indexing scheme, shown in Figure~\ref{fig:Scheme_Zernike}) were used for correction.
 
@@ -316,7 +316,7 @@ We instead use a CNN to learn the mapping between the point spread function (PSF
 
 To generate training images, we introduce controlled aberrations by randomly generating Zernike polynomial coefficients of orders 4, 5, and 6 (University of Arizona indexing), which the SLM applies to modify the beam. We restrict our analysis to these orders for simplicity. We exclude piston, tip, and tilt (orders 1--3), as these do not represent true wavefront curvature aberrations.
 
-A critical preprocessing step is selecting a single spot from the duplicated laser image and cropping appropriately. Our preprocessing script performs the following steps: (1) normalise the image to 8-bit range; (2) apply thresholding to create a binary image; (3) find contours in the thresholded image; (4) identify the largest contour by area; (5) crop the image to a standard bounding rectangle. Constant image size is required for the neural network input.
+A critical preprocessing step is selecting a single spot from the duplicated laser image and cropping appropriately. Our preprocessing script performs the following steps: (1) normalize the image to 8-bit range; (2) apply thresholding to create a binary image; (3) find contours in the thresholded image; (4) identify the largest contour by area; (5) crop the image to a standard bounding rectangle. Constant image size is required for the neural network input.
 
 This preprocessing enables us to substantially increase the effective dataset size. Cases where the two spots are too close and both are captured are excluded from the dataset. An example of a preprocessed training image is shown in Figure~\ref{fig:NN_Train_Img}.
 
@@ -367,7 +367,7 @@ This architecture is designed to capture spatial patterns in the images that cor
 
 \subsection{Hyperparameters and Training}
 
-Hyperparameters significantly influence model performance and generalisation. We used the following configuration:
+Hyperparameters significantly influence model performance and generalization. We used the following configuration:
 
 \subsubsection{Model Compilation}
 
@@ -376,7 +376,7 @@ The model is compiled with the Adam optimizer, which is widely used for its effe
 \subsubsection{Training Configuration}
 
 The dataset was split into training (70\%), validation (15\%), and test (15\%) sets using random shuffling to ensure representative distributions across all sets. Training was performed for 10 epochs with a batch size of 32. The learning rate was set to the default Adam value ($10^{-3}$). Early stopping was not employed, as the model showed consistent improvement throughout training. No explicit regularisation techniques (dropout, L2 regularisation) were applied, though the limited dataset size naturally provides some regularisation effect.\par
-The choice of architecture and hyperparameters represents a balance between model capacity and generalisation. The three-layer convolutional architecture provides sufficient capacity to learn relevant spatial features while remaining computationally tractable. The 64-neuron dense layer allows the model to learn complex combinations of convolutional features relevant to Zernike coefficient prediction. The relatively small number of parameters compared to deeper architectures helps mitigate overfitting given our limited dataset size.
+The choice of architecture and hyperparameters represents a balance between model capacity and generalization. The three-layer convolutional architecture provides sufficient capacity to learn relevant spatial features while remaining computationally tractable. The 64-neuron dense layer allows the model to learn complex combinations of convolutional features relevant to Zernike coefficient prediction. The relatively small number of parameters compared to deeper architectures helps mitigate overfitting given our limited dataset size.
 
 
 \subsection{Results}
@@ -426,22 +426,22 @@ The training results, presented in Tables~\ref{tab:resultados_treinamento} and~\
   \end{tabular}
 \end{table}
 
-The results demonstrate significant learning during training, with the model achieving 92.33\% accuracy on the training set, 84.31\% on the validation set, and 80.39\% on the test set after 10 epochs. The test set performance provides insight into the model's generalisation to unseen data. The decreasing loss and MAE values, along with increasing accuracy, indicate successful learning of the mapping between focal spot images and Zernike coefficients.\par
+The results demonstrate significant learning during training, with the model achieving 92.33\% accuracy on the training set, 84.31\% on the validation set, and 80.39\% on the test set after 10 epochs. The test set performance provides insight into the model's generalization to unseen data. The decreasing loss and MAE values, along with increasing accuracy, indicate successful learning of the mapping between focal spot images and Zernike coefficients.\par
 Several observations can be made from the training dynamics. The initial epoch shows a large loss (311.52) and low accuracy (44.31\%), indicating the model starts with poor predictions. Rapid improvement occurs in the first few epochs, with accuracy reaching 65.59\% by epoch 2. The validation accuracy shows some fluctuation (e.g., decreasing from 80.39\% at epoch 2 to 76.47\% at epoch 3), suggesting the model is learning features that may not generalise well initially. However, by epoch 5, both training and validation metrics show consistent improvement.\par
-The gap between training accuracy (92.33\%) and test accuracy (80.39\%) indicates some overfitting, which is expected given the limited dataset size. The validation accuracy (84.31\%) lies between training and test accuracies, suggesting the validation set may not fully represent the test set distribution. The mean absolute error (MAE) of 0.1208 on the test set provides a quantitative measure of prediction accuracy: on average, predicted Zernike coefficients differ from true values by approximately 0.12 in normalised units. This level of accuracy may be sufficient for initial wavefront correction, though iterative refinement may be necessary for optimal performance.\par
+The gap between training accuracy (92.33\%) and test accuracy (80.39\%) indicates some overfitting, which is expected given the limited dataset size. The validation accuracy (84.31\%) lies between training and test accuracies, suggesting the validation set may not fully represent the test set distribution. The mean absolute error (MAE) of 0.1208 on the test set provides a quantitative measure of prediction accuracy: on average, predicted Zernike coefficients differ from true values by approximately 0.12 in normalized units. This level of accuracy may be sufficient for initial wavefront correction, though iterative refinement may be necessary for optimal performance.\par
 The model's ability to achieve 80\% accuracy with only 506 training images is promising, suggesting that the relationship between focal spot morphology and Zernike coefficients contains learnable patterns that the CNN can extract. However, the performance gap compared to related work (which typically achieves higher accuracy with larger datasets) highlights the importance of dataset size for deep learning approaches.\par
 To assess the practical utility of the predictions, we can consider the impact of prediction errors on wavefront correction. For a typical aberration coefficient range of $[-0.6, 0.6]$, an MAE of 0.12 represents approximately 10\% of the full range. This suggests that while predictions may not be perfect, they provide a good starting point for correction, potentially reducing the number of iterations needed for convergence compared to random initialisation or manual adjustment.
 
 
 \section{Conclusion}
 
-We have presented a machine learning approach to optimise aberration correction in high-power laser systems for high harmonic generation. We implemented and compared two methods: Bayesian optimisation and a convolutional neural network.
+We have presented a machine learning approach to optimize aberration correction in high-power laser systems for high harmonic generation. We implemented and compared two methods: Bayesian optimization and a convolutional neural network.
 
-Bayesian optimisation successfully optimised individual Zernike modes and their combinations, providing a baseline for comparison. This approach demonstrated the feasibility of automated optimisation for wavefront correction, systematically exploring parameter spaces that would be impractical to search manually. However, this approach optimises only a single objective function (peak intensity) and requires sequential optimisation of each mode, which may miss optimal combinations requiring simultaneous adjustment of multiple modes.
+Bayesian optimization successfully optimized individual Zernike modes and their combinations, providing a baseline for comparison. This approach demonstrated the feasibility of automated optimization for wavefront correction, systematically exploring parameter spaces that would be impractical to search manually. However, this approach optimizes only a single objective function (peak intensity) and requires sequential optimization of each mode, which may miss optimal combinations requiring simultaneous adjustment of multiple modes.
 
-The CNN approach demonstrates promising results, achieving 80.39\% accuracy on test data with a relatively small dataset of 506 images. The model successfully learns the mapping between focal spot images and Zernike coefficients, with consistent improvement over training epochs. The gap between training (92.33\%) and test (80.39\%) accuracy suggests some overfitting, which is expected given the limited dataset size. The mean absolute error of 0.1208 on the test set indicates that predicted coefficients are, on average, within 0.12 normalised units of the true values, which may be sufficient for initial correction with iterative refinement.\par
-Comparing the two approaches, Bayesian optimisation provides interpretable results and systematic exploration of parameter space, but is limited by its sequential nature and single-objective optimisation. The CNN approach offers the potential for real-time prediction from single images and can capture complex relationships between image features and aberration coefficients, but requires a larger dataset for optimal performance. Both methods demonstrate the viability of machine learning for automated aberration correction in HHG systems.\par
-The primary limitation of this work is the small dataset size compared to related studies. Expanding the dataset to thousands of images would likely improve generalisation and reduce overfitting. Future work should also explore: (1) incorporating additional Zernike modes beyond orders 4--6 to capture higher-order aberrations; (2) implementing the predicted coefficients in a closed-loop correction system for real-time adaptive optics; (3) directly comparing CNN performance with Bayesian optimisation on the same experimental setup with identical metrics; (4) investigating transfer learning from simulation data to improve generalisation; (5) exploring multi-objective optimisation that considers both peak intensity and beam quality metrics; and (6) developing hybrid approaches that combine the interpretability of Bayesian optimisation with the speed of CNN prediction.\par
+The CNN approach demonstrates promising results, achieving 80.39\% accuracy on test data with a relatively small dataset of 506 images. The model successfully learns the mapping between focal spot images and Zernike coefficients, with consistent improvement over training epochs. The gap between training (92.33\%) and test (80.39\%) accuracy suggests some overfitting, which is expected given the limited dataset size. The mean absolute error of 0.1208 on the test set indicates that predicted coefficients are, on average, within 0.12 normalized units of the true values, which may be sufficient for initial correction with iterative refinement.\par
+Comparing the two approaches, Bayesian optimization provides interpretable results and systematic exploration of parameter space, but is limited by its sequential nature and single-objective optimization. The CNN approach offers the potential for real-time prediction from single images and can capture complex relationships between image features and aberration coefficients, but requires a larger dataset for optimal performance. Both methods demonstrate the viability of machine learning for automated aberration correction in HHG systems.\par
+The primary limitation of this work is the small dataset size compared to related studies. Expanding the dataset to thousands of images would likely improve generalization and reduce overfitting. Future work should also explore: (1) incorporating additional Zernike modes beyond orders 4--6 to capture higher-order aberrations; (2) implementing the predicted coefficients in a closed-loop correction system for real-time adaptive optics; (3) directly comparing CNN performance with Bayesian optimization on the same experimental setup with identical metrics; (4) investigating transfer learning from simulation data to improve generalization; (5) exploring multi-objective optimization that considers both peak intensity and beam quality metrics; and (6) developing hybrid approaches that combine the interpretability of Bayesian optimization with the speed of CNN prediction.\par
 These results establish a foundation for automated aberration correction in HHG systems, with the potential to significantly improve beam quality and harmonic generation efficiency. The demonstrated ability to predict Zernike coefficients from focal spot images opens possibilities for real-time adaptive optics systems that can automatically maintain optimal beam quality, reducing the need for manual intervention and enabling more efficient use of experimental time.
 
 \begin{thebibliography}{99}
