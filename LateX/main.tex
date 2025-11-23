@@ -1,107 +1,103 @@
-\documentclass[12pt]{article}
+\documentclass[a4paper,twoside,12pt]{article}
+
+%\setlength\parskip{0em}
+%\setlength\parindent{0pt}
+
+%\usepackage[latin1]{inputenc}
+%\usepackage[brazil,brazilian]{babel}
+\usepackage{multicol} % double column
+\usepackage{graphicx}
+%\PassOptionsToPackage{dvipdfmx}{graphicx}
+\usepackage{amsmath}
+\usepackage{mathptmx}
+\usepackage{hyperref}% put email of author
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bm}% bold math
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[portuguese]{babel}
-\usepackage[letterpaper,top=7mm,bottom=7mm,left=5mm,right=5mm,marginparwidth=1.75cm]{geometry}
-
-\usepackage{multicol, caption}
-\usepackage{cite}
-\usepackage{booktabs}
-\usepackage{graphicx,wrapfig,lipsum}
-\usepackage{subcaption}
-\usepackage{multirow}
+\usepackage{color,colortbl,multirow}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\definecolor{Gray}{gray}{0.9} % or just use gray!15 below and skip this line
+\newcolumntype{W}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X} % numbers right-aligned
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}  % centered cells
+\usepackage{caption}
+\usepackage{array}
+\usepackage{subfigure}
+\usepackage{placeins}
 \usepackage{float}
-\usepackage[skip=2pt, indent=40pt]{parskip}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{booktabs}
+\usepackage{cite}
 
-\newenvironment{Figure}
-  {\par\medskip\noindent\minipage{\linewidth}}
-  {\endminipage\par\medskip}
- 
-\makeatletter
-\newenvironment{figurehere}
-{\def\@captype{figure}}
-{}
-\makeatother
+\usepackage[T1]{fontenc}
 
-\usepackage{hyperref}
-
-\hypersetup{colorlinks,      
-            linkcolor=blue, 
-            anchorcolor=black,
-            citecolor=cyan,  
-            filecolor=black, 
-            menucolor=black, 
-            urlcolor=teal,  
-	        bookmarksopen=true,
-	        bookmarksnumbered=true,
-            }
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+%\usepackage{authblk}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\setlength{\headheight}{25.49454pt}
+\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lhead{}%Cabeçalho vazio à esquerda
+\rhead{{EAFExp}} % Right header
+\chead{\bfseries \small{Brazilian Centre for Physics Research} \\ 6th Edition of the Advanced School of Experimental Physics} % Centre header
 
 
 
 
-\def\nameP{Guilherme Fernandes}
-\def\istidP{ist1103847}
-\def\nameDU{Duarte Alexandrino}
-\def\istidDU{ist1103169}
-\def\nameE{Eduardo Silva}
-\def\istidE{ist1103240}
-\def\nameDA{João Matias}
-\def\istidDA{ist1103572}
-\def\nameJ{Joaquim Pereira}
-\def\istidJ{ist1103871}
-
-% #############################################################################
 %
-%               DO NOT MODIFY THE LINES FROM HERE TO THE MAIN DOCUMENT BODY
-% 
-% #############################################################################
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title of article%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+\title{Deep Learning Optimization for High Power Lasers Aberrations Correction}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Author name %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+\author{%\large
+Fernandes, G.G.D.$^1$; Alexandrino, D.$^1$; Silva, E.$^1$; Matias, J.$^1$; Pereira, J.$^1$\\ % First Author
+\footnotesize $^1$Instituto Superior Técnico \\ % Institution address
+%************************************************************************************************************************
+ % E-mail address
+ %\small  \href{mailto:guilhermegrancho@tecnico.ulisboa.pt}%{guilhermegrancho@tecnico.ulisboa.pt}\\
+%\small  \href{mailto:vitor.s.oliveira@edu.ufes.br}%{vitor.s.oliveira@edu.ufes.br}\\
+\vspace{-0mm}
+}
+
+\date{~~~}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-% Capa centralizada
-\begin{titlepage}
-    \centering
 
-    % Logotipo
-    \vspace*{1cm}
-    \includegraphics[width=10cm]{Imagens/transferir.jpg}
+\maketitle % Insert title
 
-    % Espaço entre o logotipo e o título
-    \vspace{5cm}
+\thispagestyle{fancy} % All pages have headers and footers
 
-    % Título
-    {\Huge \textbf{Deep Learning Optimization for High Power Lasers Aberrations Correction}} \\
-    \vspace{5cm}
+\vspace{-2.0cm}
 
-    % Subtítulo ou descrição
-    {\Large Experimental Physics Laboratory in Research Units} \\
-    \vspace{1.5cm}
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+\begin{abstract}
 
-    % Lista de autores
-    \textbf{\nameP{} (\istidP{})} \\
-    \textbf{\nameDA{} (\istidDA{})} \\
-    \textbf{\nameDU{} (\istidDU{})} \\
-    \textbf{\nameE{} (\istidE{})} \\
-    \textbf{\nameJ{} (\istidJ{})} \\
-    \vspace{2cm}
+\vspace{-3mm}
+\noindent High harmonic generation (HHG) proves itself as a useful non-linear process that permits table-top generation of tunable high energy coherent very short radiation pulses, in the EUV to soft X-ray range, which can then be given multiple applications, like photoemission spectroscopy in condensed matter physics \cite{zhong2022high}, pump probe spectroscopy for high energy density plasmas, etc. Typically one has to deal with optical aberrations resulting from the system used to manipulate the high-power laser necessary for HHG. Through the use of an SLM and several different machine learning algorithms, including a neural network, we continued previous work to optimize for these aberrations and improve the current setup being used for HHG.
+\end{abstract}
 
-    % Departamento e Instituto
-    {\large Physics Department} \\
-    {\large Instituto Superior Técnico} \\
-    \vspace{1cm}
 
-    % Ano
-    {\large 2024}
-
-\end{titlepage}
-%TC:endignore
-% #############################################################################
-%
-%                           BEGIN MAIN DOCUMENT BODY
-%
-% #############################################################################
-
-\begin{center}
-    \section*{Abstract}
-\end{center}
+\vspace{8mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                            
+\begin{multicols}{2} % Two-column layout throughout the main article text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\figurename}{Figure}
 \captionsetup{font=scriptsize}
@@ -109,13 +105,7 @@
 \texttt{\textcolor{blue}{#1}}%
 }
 
-\vspace{2mm}
-High harmonic generation (HHG) proves itself as a useful non-linear process that permits table-top generation of tunable high energy coherent very short radiation pulses, in the EUV to soft X-ray range, which can then be given multiple applications, like photoemission spectroscopy in condensed matter physics \cite{zhong2022high}, pump probe spectroscopy for high energy density plasmas, etc. Typically one has to deal with optical aberrations resulting from the system used to manipulate the high-power laser necessary for HHG. Through the use of an SLM and several different machine learning algorithms, including a neural network, we continued previous work to optimize for these aberrations and improve the current setup being used for HHG. 
-\vspace{2mm}
-
-\begin{multicols}{2}
-\pagenumbering{arabic}
-\section{Theoretical Introduction}
+\section{Introduction}
 HHG is a non-linear process where the interaction between a high intensity laser pulse and a certain material generates harmonics of the laser of a high order (above the fifth) or, in other words, pulses with a frequency n times higher than that of the initial pulse. \par
 One can use a simple model to explain HHG, known as the \textbf{three-step model} as described in \cite{PhysRevLett.71.1994}: an electron of the material tunnels out from the atomic potential which has been twisted by the intense field from the laser; the now free electron is accelerated away from the atom due to the driving field; after half a period of the laser, the electric field inverts and accelerates the electron back into the atomic potential that will then emit a high energy photon. The non-linearity of the process means that usually, the duration of the light pulse produced by this process is actually shorter than the pulse of light that hit the material initially. This is what allows HHG to be used for \textbf{attosecond physics}, where a very high time resolution is necessary.\par
 
@@ -129,32 +119,25 @@ The crux of this experiment consisted in the development, testing and usage of s
 An initial simple setup was used for the purposes of developing and testing the optimization algorithms composed of a set of different lenses, mirrors, the SLM, a laser and a camera. The laser paths through several lenses to induce aberrations, then goes through the SLM to be "corrected" and is finally focused on a camera.\par
 
 Then, the main setup, was the one previously used for HHG, with the SLM implented. A high-power infrared pulse laser was utilized, and pumped into a vaccum chamber, where it would focus on a gas cell, hence creating the high order harmonics. At the end of the vacuum chamber there was an advanced UV Greateyes camera that was used for detection and visualization of the harmonics and would eventually provide data for the machine learning algorithms developed in the earlier setup to work with. The optical system was composed of several lenses, mirrors, other optical components, and, of course, the SLM. Of note are the attenuator that allowed control of the laser intensity; several irises that allowed for alignment and also some degree of control over the intensity, as well as a selection of the correct order beam\footnote{The diffraction grating like behavior of the SLM causes it to have multiple orders of diffracted beams, (zeroth-order not being diffracted by the SLM at all, etc.) we had then to make sure we only had the first-order diffracted beam going into the vacuum chamber, blocking the rest with an iris.}; a beam splitter that would split the laser onto an adjacent path into a Thorlabs amera that would gather data for an early form of the optimization algorithms that did not use data from the Greateyes UV camera yet. A diagram of the setup can be seen below, \ref{fig:setupHHG}.\par
-\begin{figure}[H]
+\begin{figure*}[ht]
   \centering
-  \includegraphics[width=0.40\textwidth]{Imagens/setup3.png}
+  \includegraphics[width=0.75\textwidth]{Imagens/setup3.png}
   \caption{Final setup for HHG with SLM. As visible, the gas used in the cell is krypton and filters were used to remove all wavelengths from the beam post-HHG (represented in pink), except for the ones corresponding to the high order harmonics in the XUV range (represented in purple). The dashed orange lines represent the different unwanted orders of the diffracted beam coming from the SLM, that then get blocked by the iris.}
   \label{fig:setupHHG}
-\end{figure}
+\end{figure*}
 The implementation of the SLM into the HHG system was initially conducted with some attempts of manual optimization with data from the Thorvision camera, changing directly the aberration coefficients in the SLM settings.\par
 Once HHG was initiated, the oblique astigmatism coefficient in the SLM was swiped from 0.03 to 0.24, with 0.03 increments. Then, the data, collected from the Greateyes camera, was analyzed to provide the following graphs.
 
-\begin{figure}[H]
+\begin{figure*}[ht]
   \centering
-  \begin{subfigure}[b]{0.26\textwidth}
-    \includegraphics[width=\linewidth]{Imagens/hhg_vs_oa.png}
-    \caption{HHG´s Total Signal vs Oblique Astigmatism}
-    \label{fig:grafico_hhg_oa}
-  \end{subfigure}
+  \subfigure[HHG´s Total Signal vs Oblique Astigmatism]{\includegraphics[width=0.49\textwidth]{Imagens/hhg_vs_oa.png}}
   \hfill
-  \begin{subfigure}[b]{0.21\textwidth}
-    \includegraphics[width=\linewidth]{Imagens/240111_PM035132MS781_ob_ast_0.18.jpg}
-    \caption{Map of Intensities (0.18)}
-    \label{fig:imagem2}
-  \end{subfigure}
+  \subfigure[Map of Intensities (0.18)]{\includegraphics[width=0.49\textwidth]{Imagens/240111_PM035132MS781_ob_ast_0.18.jpg}}
+  \caption{}
   \label{fig:imagens}
-\end{figure}
+\end{figure*}
 
-As shown in \ref{fig:grafico_hhg_oa}, it is possible to manually find the coefficients that have the greatest effect on the total signal. However, when dealing with higher dimensionality problems (there are many more parameters to optimize besides oblique astigmatism), this method is not optimal. Thus, to make this process faster, it is important to consider Machine Learning approaches, some of which will be detailed in sections \ref{sec4} and \ref{sec6}.
+As shown in figure \ref{fig:imagens}, it is possible to manually find the coefficients that have the greatest effect on the total signal. However, when dealing with higher dimensionality problems (there are many more parameters to optimize besides oblique astigmatism), this method is not optimal. Thus, to make this process faster, it is important to consider Machine Learning approaches, some of which will be detailed in sections \ref{sec4} and \ref{sec6}.
 
 
 
@@ -191,47 +174,40 @@ In this section, we take a closer look into the frequencies and wavelength of th
 \subsection{Applying the Fourier Transform}
 
 Initially, using the ALEX-i camera, we were able to acquire a large dataset of many different images from the harmonic system, resembling the following case:
-\begin{multicols}{2}
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=0.18\textwidth]{Imagens/primeira.png}
-      \caption{Harmonics Signal using ALEX-i Camera.}
-      \label{fig:fourier1}
-    \end{figure}
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=0.18\textwidth]{Imagens/fourier.png}
-      \caption{Fourier Transform.}
-      \label{fig:fourier2}
-    \end{figure}
-\end{multicols}
+\begin{figure*}[ht]
+  \centering
+  \subfigure[Harmonics Signal using ALEX-i Camera.]{\includegraphics[width=0.49\textwidth]{Imagens/primeira.png}}
+  \hfill
+  \subfigure[Fourier Transform.]{\includegraphics[width=0.49\textwidth]{Imagens/fourier.png}}
+  \caption{}
+  \label{fig:fourier_pair}
+\end{figure*}
 Looking closely, it is possible to distinguish at least two different frequencies on the harmonic (seen by the different spaces between the vertical lines). When we have an interference pattern from several wavelengths, we want to measure the distance between the fringes, given by $w_{i} = z * \frac{\lambda_{i}}{d}$. Here, $z \sim 3 m$ is the distance between the source and the camera, and $d \sim 75 \mu m$ is the distance between both HHG sources.
-Therefore each value of $\lambda_{i}$ will create fringes with separation $w_{i}$. However, it is hard to extract from the image above what are these separations, thus we do Fourier analysis (2D spatial Fourier transform), to get the result in \ref{fig:fourier2}.
+Therefore each value of $\lambda_{i}$ will create fringes with separation $w_{i}$. However, it is hard to extract from the image above what are these separations, thus we do Fourier analysis (2D spatial Fourier transform), to get the result in figure \ref{fig:fourier_pair}.
 
 
 
-When we apply the Fourier transform, we clearly observe peaks corresponding to the spatial frequency of $k_{i} = 2 * \frac{\pi}{w_{i}}$. This way, it is possible to measure the intensity of each peak inside the red box on the image above and get to know the distance between the peaks. To get a graph that enables the measuring of $k_{i}$, we used another algorithm to look at the intensity value of every pixel along a line (that best suits the interference pattern on the 2D Fourier Transform), such as in \ref{fig:fourier3}, giving us the following plot:
+When we apply the Fourier transform, we clearly observe peaks corresponding to the spatial frequency of $k_{i} = 2 * \frac{\pi}{w_{i}}$. This way, it is possible to measure the intensity of each peak inside the red box on the image above and get to know the distance between the peaks. To get a graph that enables the measuring of $k_{i}$, we used another algorithm to look at the intensity value of every pixel along a line (that best suits the interference pattern on the 2D Fourier Transform), such as in figure \ref{fig:fourier_analysis}, giving us the following plot:
 
-\begin{figure}[H]
+\begin{figure*}[ht]
   \centering
-  \includegraphics[width=0.20\textwidth]{Imagens/reta.jpg}
-  \caption{Second Algorithm used in the Fourier Space.}
-  \label{fig:fourier3}
-\end{figure}
+  \subfigure[Second Algorithm used in the Fourier Space.]{\includegraphics[width=0.49\textwidth]{Imagens/reta.jpg}}
+  \hfill
+  \subfigure[Intensity of Pixels Along the Polynomial Curve.]{\includegraphics[width=0.49\textwidth]{Imagens/peaks.png}}
+  \caption{}
+  \label{fig:fourier_analysis}
+\end{figure*}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.35\textwidth]{Imagens/peaks.png}
-  \caption{Intensity of Pixels Along the Polynomial Curve in \ref{fig:fourier3}.}
-  \label{fig:fourier4}
-\end{figure}
-
-Using the graph above, we can measure directly the values of $k_{i}$, and know the different wavelengths that produced the figure \ref{fig:fourier1}. To get the value of $k_{i}$ we look at peaks pixel indexes and using the ALEX-i camera specifications (knowing that the distance of each pixel is 13.5 $\mu m$), it is possible to get the correspondent value of the spatial frequency. Using the dataset we had, we got the following table:
+Using the graph above, we can measure directly the values of $k_{i}$, and know the different wavelengths that produced the figure \ref{fig:fourier_pair}. To get the value of $k_{i}$ we look at peaks pixel indexes and using the ALEX-i camera specifications (knowing that the distance of each pixel is 13.5 $\mu m$), it is possible to get the correspondent value of the spatial frequency. Using the dataset we had, we got the following table:
 
 
-\begin{table}[H]
+\begin{center}
+\begin{minipage}{\columnwidth}
 \centering
-\resizebox{\columnwidth}{!}{%
+\setlength{\tabcolsep}{2pt}     % less space between columns
+\renewcommand{\arraystretch}{1.1}
+\footnotesize                   % smaller text (optional)
+\resizebox{\textwidth}{!}{%   % ensures it fits in the column
 \begin{tabular}{|c|ccc|cccc|cccc|}
 \hline
 \textbf{Image }& \multicolumn{3}{c|}{1} & \multicolumn{4}{c|}{2} & \multicolumn{4}{c|}{3} \\ \hline
@@ -284,9 +260,10 @@ $\lambda$ [nm]&
   \multicolumn{1}{c|}{14.28} &
   15.53 \\ \hline
 \end{tabular}}
-\caption{Fourier Transform Analysis.}
-  \label{tab:tabfourier}
-\end{table} 
+\captionof{table}{Fourier Transform Analysis.}
+\label{tab:tabfourier}
+\end{minipage}
+\end{center} 
 
 Looking at the table above, we get conflicting results, since the minimum distance between lines is $w_{min} \sim 0.5 mm$ (what we expected), but the evolution of $w_{i}$ and $\lambda_{i}$ isn't constant for all cases. Looking at the values of both the space between the fringes and the wavelength of the harmonics, its possible to understand that those values don't follow the criteria of an harmonic. In conclusion, the algorithm implemented is great at discovering the values for the $w_{min}$ and $k_{max}$, however due to chaos and noise form the signal, it is very hard to decide which peaks should be consider, creating a bad evolution and determination the $\lambda$ values.
 
@@ -310,12 +287,12 @@ Then, a key step is ensuring only one of the two duplicated spots of the laser i
 
 With this pre-processing we can have substantially more images for our data set. In some cases, the two spots are too close and the image might capture them both so they must be excluded.
 
-\begin{figure}[H]
+\begin{figure*}[ht]
   \centering
-  \includegraphics[width=0.25\textwidth]{Imagens/NN_Train_Img1.jpg}
+  \includegraphics[width=0.5\textwidth]{Imagens/NN_Train_Img1.jpg}
   \caption{Example of training image generated}
-  \label{fig:fourier1}
-\end{figure}
+  \label{fig:NN_Train_Img}
+\end{figure*}
 
 With this script, we obtained 506 pairs of .pngs and .csvs that composed our data set. It is important to note that our data set is considerably smaller than the ones used in the papers mentioned which is a great limitation. For example, in the second paper the training data is composed of 18 thousand images 128x128. The images were acquired for the HHG generation set up and the camera used was from Thor Labs.
  
@@ -365,14 +342,14 @@ The process begins with the compilation of the model, where the optimizer, loss 
 
 \subsection{Results}
 
-The training results of the model, as presented in Tables~\ref{tab:resultados_treinamento} and~\ref{tab:avaliacao_teste}, reveal the evolution of loss (\codeword{loss}), mean absolute error (\codeword{mae}), and accuracy (\codeword{accuracy}) metrics across training and validation epochs. The final evaluation on test data is documented in Table~\ref{tab:avaliacao_teste}. The following graphic with this data~\ref{fig:Training, Validation, and Test Accuracy}, shows very promising results.
+The training results of the model, as presented in Tables~\ref{tab:resultados_treinamento} and~\ref{tab:avaliacao_teste}, reveal the evolution of loss (\codeword{loss}), mean absolute error (\codeword{mae}), and accuracy (\codeword{accuracy}) metrics across training and validation epochs. The final evaluation on test data is documented in Table~\ref{tab:avaliacao_teste}. The following graphic with this data (figure \ref{fig:Training_Validation_Test_Accuracy}) shows very promising results.
 
-\begin{figure}[H]
+\begin{figure*}[ht]
   \centering
-  \includegraphics[width=0.3\textwidth]{Imagens/transferir_1.png}
+  \includegraphics[width=0.75\textwidth]{Imagens/transferir_1.png}
   \caption{Training, Validation, and Test Accuracy}
-  \label{fig:Training, Validation, and Test Accuracy}
-\end{figure}
+  \label{fig:Training_Validation_Test_Accuracy}
+\end{figure*}
 
 
 The results indicate significant progress of the model during training, highlighting the learning capability of the neural network. Evaluation of test data provides critical insight into the model's generalization to new instances.
@@ -386,48 +363,56 @@ Looking ahead, the potential for even more favorable outcomes is anticipated wit
 
 The current results lay a foundation for future endeavors in refining the model architecture and leveraging larger datasets.
 
+\section{Acknowledgements} 
 
+We would like to thank the EAFEXP coordination and all the professors and teaching assistants for their support and guidance during this project.
 
-\textcolor{white}{Obrigado Deus}
+\begin{thebibliography}{99}
 
+\bibitem{zhong2022high} ZHONG, S. et al. \textbf{High harmonic generation}. (Reference details to be added)
 
+\bibitem{PhysRevLett.71.1994} CORKUM, P. B. \textbf{Plasma perspective on strong field multiphoton ionization}. Physical Review Letters, v. 71, n. 13, p. 1994-1997, 1993.
 
+\bibitem{lakshminarayanan2011zernike} LAKSHMINARAYANAN, V.; FLEET, A. \textbf{Zernike polynomials: a guide}. Journal of Modern Optics, v. 58, n. 7, p. 545-561, 2011.
 
+\bibitem{wang2021deep} WANG, K. et al. \textbf{Deep learning for wavefront sensing: a review}. (Reference details to be added)
+
+\bibitem{jin2018machine} JIN, K. et al. \textbf{Machine learning for adaptive optics}. (Reference details to be added)
+
+\end{thebibliography} 
 \end{multicols}
 
+\appendix
+\section{Appendix}
 
-\section*{Anexos}
+If it is of interest to the reader, additional figures and tables are shown below.
 
-\begin{multicols}{2}
-
-\begin{figure}[H]
+\begin{figure}[!h]
   \centering
-  \includegraphics[width=0.35\textwidth]{Imagens/setup1.png}
+  \includegraphics[width=0.5\textwidth]{Imagens/setup1.png}
   \caption{Initial setup for testing and developing optimization models.}
   \label{fig:setupSLM}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!h]
   \centering
-  \includegraphics[width=0.35\textwidth]{Imagens/Zernike.jpeg}
-    \caption{Zernike Polynomials Scheme}
-    \label{fig:Scheme_Zernike}
-\end{figure}
-\end{multicols}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.35\textwidth]{Imagens/transferir.png}
-    \caption{Neural Network Architecture}
-    \label{fig:Neural Network Architecture}
+  \includegraphics[width=0.5\textwidth]{Imagens/Zernike.jpeg}
+  \caption{Zernike Polynomials Scheme}
+  \label{fig:Scheme_Zernike}
 \end{figure}
 
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{Imagens/transferir.png}
+  \caption{Neural Network Architecture}
+  \label{fig:Neural Network Architecture}
+\end{figure}
 
-
-\begin{table}[H]
+\begin{table}[!h]
+  \centering
   \caption{Training Results}
   \label{tab:resultados_treinamento}
-  \centering
-  \resizebox{\columnwidth}{!}{%
+  \resizebox{\textwidth}{!}{%
   \begin{tabular}{ccccccc}
     \toprule
     \textbf{Epoch} & \textbf{\texttt{loss}} & \textbf{\texttt{mae}} & \textbf{\texttt{accuracy}} & \textbf{\texttt{val\_loss}} & \textbf{\texttt{val\_mae}} & \textbf{\texttt{val\_accuracy}} \\
@@ -446,10 +431,10 @@ The current results lay a foundation for future endeavors in refining the model 
   \end{tabular}}
 \end{table}
 
-\begin{table}[H]
+\begin{table}[!h]
+  \centering
   \caption{Test Data Evaluation}
   \label{tab:avaliacao_teste}
-  \centering
   \begin{tabular}{ccc}
     \toprule
     \textbf{\texttt{loss}} & \textbf{\texttt{mae}} & \textbf{\texttt{accuracy}} \\
@@ -458,10 +443,6 @@ The current results lay a foundation for future endeavors in refining the model 
     \bottomrule
   \end{tabular}
 \end{table}
-
-\renewcommand{\refname}{References}
-\bibliographystyle{plain}
-\bibliography{Bibliografia}
 
 \end{document}
 
